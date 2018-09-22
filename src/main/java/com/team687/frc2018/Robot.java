@@ -15,6 +15,7 @@ import com.team687.frc2018.commands.auto.RightToRightSwitchAuto;
 import com.team687.frc2018.constants.DriveConstants;
 import com.team687.frc2018.constants.SuperstructureConstants;
 import com.team687.frc2018.subsystems.Arm;
+import com.team687.frc2018.subsystems.Climber;
 import com.team687.frc2018.subsystems.Drive;
 import com.team687.frc2018.subsystems.Intake;
 import com.team687.frc2018.subsystems.Wrist;
@@ -36,7 +37,8 @@ public class Robot extends TimedRobot {
     public static Drive drive;
     public static Arm arm;
     public static Wrist wrist;
-    public static Intake intake;
+	public static Intake intake;
+	public static Climber climber;
 
     public static DriverStation ds;
     public static PowerDistributionPanel pdp;
@@ -74,6 +76,7 @@ public class Robot extends TimedRobot {
 	drive.resetEncoders();
 	drive.resetGyro();
 
+	climber = new Climber();
 	oi = new OI();
 	ds = DriverStation.getInstance();
 

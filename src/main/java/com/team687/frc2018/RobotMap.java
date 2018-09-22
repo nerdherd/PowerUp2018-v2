@@ -32,4 +32,10 @@ public class RobotMap {
     public static final int kClimber1ID = 20;
     public static final int kClimber2ID = 21;
 
+    public static final int kClimberPiston1ID = 2;
+    public static final int kClimberPiston2ID = 3;
+
+    
+    
+
 }

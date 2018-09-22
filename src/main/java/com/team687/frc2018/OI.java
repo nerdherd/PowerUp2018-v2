@@ -57,13 +57,14 @@ public class OI {
     public JoystickButton stowToForwards_7;
     public JoystickButton adjustMiddle_8;
     public JoystickButton defaultStow_10;
-
-    
     
     public JoystickButton openClaw_6;
     public JoystickButton closeClaw_5;
     
     public JoystickButton sketchyStowToBackwards_12;
+
+	// CHANGE WHEN WE FIGURE OUR WHAT BUTTON
+	public JoystickButton climberClimb_15;
 
     public OI() {
 	intake_1 = new JoystickButton(driveJoyArtic, 1);
