@@ -29,4 +29,7 @@ public class RobotMap {
     
     public static final int kAntiFoulThingID = 10;
 
+    public static final int kClimber1ID = 20;
+    public static final int kClimber2ID = 21;
+
 }
