@@ -16,6 +16,7 @@ import com.team687.frc2018.commands.drive.ResetGyro;
 import com.team687.frc2018.commands.intake.ClawClose;
 import com.team687.frc2018.commands.intake.ClawOpen;
 import com.team687.frc2018.commands.intake.SetIntakeRollerPower;
+import com.team687.frc2018.commands.intake.SetIntakePowerFromDashboard;
 import com.team687.frc2018.commands.superstructure.AdjustForwardsScale;
 import com.team687.frc2018.commands.superstructure.DefaultIntake;
 import com.team687.frc2018.commands.superstructure.DefaultStow;
@@ -126,8 +127,24 @@ public class OI {
 	 SmartDashboard.putData("Arm Position Horizontal",
 	 new SetArmPosition(SuperstructureConstants.kArmHorizontalPos));
 	 SmartDashboard.putData("Arm Position Offset", new
-	 SetArmPosition(SuperstructureConstants.kArmOffsetPos));
-	//
+     SetArmPosition(SuperstructureConstants.kArmOffsetPos));
+     
+    SmartDashboard.putData("Set intake voltage from dashboard", new SetPowerFromDashboard());
+
+    SmartDashboard.putData("Intake -12 V", -12.0/12.0);
+    SmartDashboard.putData("Intake -10 V", -10.0/12.0);
+    SmartDashboard.putData("Intake -8 V", -8.0/12.0);
+    SmartDashboard.putData("Intake -6 V", -6.0/12.0);
+    SmartDashboard.putData("Intake -4 V", -4.0/12.0);
+    SmartDashboard.putData("Intake -2 V", -2.0/12.0);
+    SmartDashboard.putData("Intake -0 V", 0.0/12.0);
+    SmartDashboard.putData("Intake 2 V", 2.0/12.0);
+    SmartDashboard.putData("Intake 4 V", 4.0/12.0);
+    SmartDashboard.putData("Intake 6 V", 6.0/12.0);
+    SmartDashboard.putData("Intake 8 V", 8.0/12.0);
+    SmartDashboard.putData("Intake 10 V", 10.0/12.0);
+    SmartDashboard.putData("Intake 12 V", 12.0/12.0);
+	
 	// SmartDashboard.putData("Wrist Voltage 0", new SetWristPercentOutput(0));
 	// SmartDashboard.putData("Wrist Position Intake", new
 	// SetWristPosition(Robot.wrist.angleAbsoluteToTicks(0)));

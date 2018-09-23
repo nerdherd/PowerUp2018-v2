@@ -21,6 +21,9 @@ public class Intake extends Subsystem {
     private final DoubleSolenoid m_claw;
 
     public Intake() {
+        // Puts the number for setting power from the dashboard
+        SmartDashboard.putNumber("Intake voltage to set", 0);
+
         m_rollers1 = new TalonSRX(RobotMap.kIntakeRollers1ID);
         m_rollers1.setNeutralMode(NeutralMode.Coast);
         m_rollers1.setStatusFramePeriod(StatusFrame.Status_1_General, 20, 0);
