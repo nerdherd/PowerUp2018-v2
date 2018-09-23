@@ -50,20 +50,21 @@ public class OI {
     public JoystickButton intake_1;
     public JoystickButton outtake_2;
     public JoystickButton stopIntake_3;
-    public JoystickButton intakePosition_4;
+    public JoystickButton openCloseClaw_4;
+    // public JoystickButton intakePosition_4;
 
     public JoystickButton switchPosition_11;
     public JoystickButton intakeRollers_9;
     public JoystickButton stowToForwards_7;
     public JoystickButton adjustMiddle_8;
     public JoystickButton defaultStow_10;
-
-    
     
     public JoystickButton openClaw_6;
     public JoystickButton closeClaw_5;
     
-    public JoystickButton sketchyStowToBackwards_12;
+    public JoystickButton flipCube_12;
+    
+    // public JoystickButton sketchyStowToBackwards_12;
 
     public OI() {
 	intake_1 = new JoystickButton(driveJoyArtic, 1);
@@ -73,8 +74,10 @@ public class OI {
 	outtake_2.whenPressed(new SetIntakeRollerPower(.8333333333333333));
 	stopIntake_3 = new JoystickButton(driveJoyArtic, 3);
 	stopIntake_3.whenPressed(new SetIntakeRollerPower(0));
-	intakePosition_4 = new JoystickButton(driveJoyArtic, 4);
-	intakePosition_4.whenPressed(new DefaultIntake());
+	openCloseClaw_4 = new JoystickButton(driveJoyArtic, 4);
+    openCloseClaw_4.whenPressed(new IntakeSequenceCurrent());
+	// intakePosition_4 = new JoystickButton(driveJoyArtic, 4);
+	// intakePosition_4.whenPressed(new DefaultIntake());
 
 	intakeRollers_9 = new JoystickButton(driveJoyArtic, 9);
 	intakeRollers_9.whenPressed(new SetIntakeRollerPower(-.8333333333333333));
@@ -96,9 +99,11 @@ public class OI {
 	openClaw_6.whenPressed(new ClawOpen());
 	closeClaw_5 = new JoystickButton(driveJoyArtic, 6);
 	closeClaw_5.whenPressed(new ClawClose());
+    flipCube_12 = new JoystickButton(driveJoyArtic, 12);
+    flipCube_12.whenPressed(new FlipCube());
 
-	sketchyStowToBackwards_12 = new JoystickButton(driveJoyArtic, 12);
-	sketchyStowToBackwards_12.whenPressed(new StowToBackwardsScale());
+	// sketchyStowToBackwards_12 = new JoystickButton(driveJoyArtic, 12);
+	// sketchyStowToBackwards_12.whenPressed(new StowToBackwardsScale());
 	
 //	sketchyStowToBackwards_12.whenPressed(new StackCubes(55));
 	
