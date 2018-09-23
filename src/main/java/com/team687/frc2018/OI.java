@@ -6,8 +6,6 @@ import com.team687.frc2018.commands.arm.SetArmVoltage;
 import com.team687.frc2018.commands.auto.CenterToLeftSwitchAuto;
 import com.team687.frc2018.commands.auto.CenterToRightSwitchAuto;
 import com.team687.frc2018.commands.auto.LeftToLeftScale2CubeAuto;
-import com.team687.frc2018.commands.auto.LeftToRightScaleAuto;
-import com.team687.frc2018.commands.auto.RightToLeftScaleAuto;
 import com.team687.frc2018.commands.auto.RightToRightCompatibleScaleAuto;
 import com.team687.frc2018.commands.auto.RightToRightScale2CubeAuto;
 import com.team687.frc2018.commands.auto.RightToRightScale3CubeAuto;
@@ -15,15 +13,16 @@ import com.team687.frc2018.commands.drive.ResetDriveEncoders;
 import com.team687.frc2018.commands.drive.ResetGyro;
 import com.team687.frc2018.commands.intake.ClawClose;
 import com.team687.frc2018.commands.intake.ClawOpen;
+import com.team687.frc2018.commands.intake.SetIntakePowerFromDashboard;
 import com.team687.frc2018.commands.intake.SetIntakeRollerPower;
 import com.team687.frc2018.commands.superstructure.AdjustForwardsScale;
+import com.team687.frc2018.commands.superstructure.BackwardsScaleToStow;
 import com.team687.frc2018.commands.superstructure.DefaultIntake;
 import com.team687.frc2018.commands.superstructure.DefaultStow;
 import com.team687.frc2018.commands.superstructure.EmergencyWristSave;
-import com.team687.frc2018.commands.superstructure.ForwardsScaleToStow;
+import com.team687.frc2018.commands.superstructure.FlipCube;
+import com.team687.frc2018.commands.superstructure.IntakeSequenceCurrent;
 import com.team687.frc2018.commands.superstructure.StackCubes;
-import com.team687.frc2018.commands.superstructure.StowToBackwardsScale;
-import com.team687.frc2018.commands.superstructure.BackwardsScaleToStow;
 import com.team687.frc2018.commands.superstructure.StowToForwardsScale;
 import com.team687.frc2018.commands.superstructure.SwitchScorePositionTeleop;
 import com.team687.frc2018.commands.wrist.ResetWristEncoder;
@@ -126,8 +125,24 @@ public class OI {
 	 SmartDashboard.putData("Arm Position Horizontal",
 	 new SetArmPosition(SuperstructureConstants.kArmHorizontalPos));
 	 SmartDashboard.putData("Arm Position Offset", new
-	 SetArmPosition(SuperstructureConstants.kArmOffsetPos));
-	//
+     SetArmPosition(SuperstructureConstants.kArmOffsetPos));
+     
+    SmartDashboard.putData("Set intake voltage from dashboard", new SetIntakePowerFromDashboard());
+
+    SmartDashboard.putNumber("Intake -12 V", -12.0/12.0);
+    SmartDashboard.putNumber("Intake -10 V", -10.0/12.0);
+    SmartDashboard.putNumber("Intake -8 V", -8.0/12.0);
+    SmartDashboard.putNumber("Intake -6 V", -6.0/12.0);
+    SmartDashboard.putNumber("Intake -4 V", -4.0/12.0);
+    SmartDashboard.putNumber("Intake -2 V", -2.0/12.0);
+    SmartDashboard.putNumber("Intake -0 V", 0.0/12.0);
+    SmartDashboard.putNumber("Intake 2 V", 2.0/12.0);
+    SmartDashboard.putNumber("Intake 4 V", 4.0/12.0);
+    SmartDashboard.putNumber("Intake 6 V", 6.0/12.0);
+    SmartDashboard.putNumber("Intake 8 V", 8.0/12.0);
+    SmartDashboard.putNumber("Intake 10 V", 10.0/12.0);
+    SmartDashboard.putNumber("Intake 12 V", 12.0/12.0);
+	
 	// SmartDashboard.putData("Wrist Voltage 0", new SetWristPercentOutput(0));
 	// SmartDashboard.putData("Wrist Position Intake", new
 	// SetWristPosition(Robot.wrist.angleAbsoluteToTicks(0)));

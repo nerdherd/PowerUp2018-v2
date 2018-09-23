@@ -17,10 +17,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Intake extends Subsystem {
 
-    private final TalonSRX m_rollers1;
+    private final TalonSRX m_rollers1, m_rollers2;
     private final DoubleSolenoid m_claw;
 
     public Intake() {
+        // Puts the number for setting power from the dashboard
+        SmartDashboard.putNumber("Intake voltage to set", 0);
+
         m_rollers1 = new TalonSRX(RobotMap.kIntakeRollers1ID);
         m_rollers1.setNeutralMode(NeutralMode.Coast);
         m_rollers1.setStatusFramePeriod(StatusFrame.Status_1_General, 20, 0);
