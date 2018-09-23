@@ -32,6 +32,7 @@ public class AutoConstants {
     public static final double kRedRightSideWallToAllianceStationEdge = 30;
     public static final double kRedLeftSideWallToAllianceStationEdge = 30;
 
+
     // robot origins
     // center means center line is y-axis
     // right/left means right/left side wall is y-axis
@@ -43,6 +44,11 @@ public class AutoConstants {
 	    .inchesToTicks((DriveConstants.kDrivetrainWidth / 2) + kRedLeftSideWallToAllianceStationEdge);
     public static double kRobotOriginY = NerdyMath.inchesToTicks(DriveConstants.kDrivetrainLength / 2);
 
+    public static final double kOriginToMidScaleX = 0;
+    public static final double kScaleY = 0;
+    public static final double kSecondCubeX = 0;
+    public static final double kSecondCubeY = 0;
+    
     // path parameters
     public static double kXOffset = 9.5763;
     public static double kYOffset = 35.73925;
@@ -76,4 +82,9 @@ public class AutoConstants {
 	    kRedSwitchLeftX, kRedSwitchFrontY / 3, kRobotCenterOriginX, kRedSwitchFrontY / 2, kRobotCenterOriginX,
 	    kRobotOriginY);
 
+    public static BezierCurve kRightToRightSwitchPath = new BezierCurve(kRobotRightOriginX, kRobotOriginY, kRobotRightOriginX, kScaleY,
+    kSecondCubeX, kSecondCubeY, kOriginToMidScaleX, kScaleY);
+
+    public static BezierCurve kLeftToLeftSwitchPath = new BezierCurve(kRobotRightOriginX, kRobotOriginY, kRobotRightOriginX, -kScaleY,
+    -kSecondCubeX, kSecondCubeY, -kOriginToMidScaleX, kScaleY);
 }
