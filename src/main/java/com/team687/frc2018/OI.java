@@ -15,6 +15,7 @@ import com.team687.frc2018.commands.intake.ClawClose;
 import com.team687.frc2018.commands.intake.ClawOpen;
 import com.team687.frc2018.commands.intake.SetIntakePowerFromDashboard;
 import com.team687.frc2018.commands.intake.SetIntakeRollerPower;
+import com.team687.frc2018.commands.intake.SetIntakePowerFromDashboard;
 import com.team687.frc2018.commands.superstructure.AdjustForwardsScale;
 import com.team687.frc2018.commands.superstructure.BackwardsScaleToStow;
 import com.team687.frc2018.commands.superstructure.DefaultIntake;
