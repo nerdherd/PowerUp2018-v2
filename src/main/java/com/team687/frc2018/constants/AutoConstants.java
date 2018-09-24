@@ -7,18 +7,19 @@ public class AutoConstants {
 
     // field measurements (absolute inches)
     // change these
-    public static final double kRedStartingWallToSwitchInches = 140;
-    public static final double kRedCenterToRightSwitchFence = 70;
+    public static final double kRedStartingWallToSwitchInches = 142;
+    public static final double kRedCenterToRightSwitchFence = 60;
+    // OFFSET RIGHT SIDE MEASUREMENT FOR SWITCH
     public static final double kRedCenterToRightSwitchInner = 30;
-    public static final double kRedCenterToLeftSwitchFence = 60;
-    public static final double kRedCenterToLeftSwitchInner = 20;
-    public static final double kRedRightSwitchLength = 56;
-    public static final double kRedLeftSwitchLength = 56;
+    public static final double kRedCenterToLeftSwitchFence = 76;
+    public static final double kRedCenterToLeftSwitchInner = 36;
+    public static final double kRedRightSwitchLength = 52;
+    public static final double kRedLeftSwitchLength = 51;
     public static final double kRedRightSwitchToFrontScale = 105;
     public static final double kRedLeftSwitchToFrontScale = 105;
     public static final double kRedRightSwitchToMidScale = 130;
     public static final double kRedLeftSwitchToMidScale = 130;
-    public static final double kRedRightSideWallToScale = 72;
+    public static final double kRedRightSideWallToScale = 73;
     public static final double kRedLeftSideWallToScale = 72;
     public static final double kPowerCubeLength = 13;
 

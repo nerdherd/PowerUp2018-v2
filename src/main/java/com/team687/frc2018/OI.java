@@ -5,6 +5,7 @@ import com.team687.frc2018.commands.arm.SetArmPosition;
 import com.team687.frc2018.commands.arm.SetArmVoltage;
 import com.team687.frc2018.commands.auto.CenterToLeftSwitchAuto;
 import com.team687.frc2018.commands.auto.CenterToRightSwitchAuto;
+import com.team687.frc2018.commands.auto.LeftToLeftCompatibleScaleAuto;
 import com.team687.frc2018.commands.auto.LeftToLeftScale2CubeAuto;
 import com.team687.frc2018.commands.auto.RightToRightCompatibleScaleAuto;
 import com.team687.frc2018.commands.auto.RightToRightScale2CubeAuto;
@@ -15,7 +16,6 @@ import com.team687.frc2018.commands.intake.ClawClose;
 import com.team687.frc2018.commands.intake.ClawOpen;
 import com.team687.frc2018.commands.intake.SetIntakePowerFromDashboard;
 import com.team687.frc2018.commands.intake.SetIntakeRollerPower;
-import com.team687.frc2018.commands.intake.SetIntakePowerFromDashboard;
 import com.team687.frc2018.commands.superstructure.AdjustForwardsScale;
 import com.team687.frc2018.commands.superstructure.BackwardsScaleToStow;
 import com.team687.frc2018.commands.superstructure.DefaultIntake;
@@ -27,6 +27,7 @@ import com.team687.frc2018.commands.superstructure.StackCubes;
 import com.team687.frc2018.commands.superstructure.StowToForwardsScale;
 import com.team687.frc2018.commands.superstructure.SwitchScorePositionTeleop;
 import com.team687.frc2018.commands.wrist.ResetWristEncoder;
+import com.team687.frc2018.commands.wrist.SetWristPercentOutput;
 import com.team687.frc2018.constants.SuperstructureConstants;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -71,7 +72,7 @@ public class OI {
 	intake_1.whenPressed(new DefaultIntake());
 	
 	outtake_2 = new JoystickButton(driveJoyArtic, 2);
-	outtake_2.whenPressed(new SetIntakeRollerPower(.8333333333333333));
+	outtake_2.whenPressed(new SetIntakeRollerPower(0.45));
 	stopIntake_3 = new JoystickButton(driveJoyArtic, 3);
 	stopIntake_3.whenPressed(new SetIntakeRollerPower(0));
 	openCloseClaw_4 = new JoystickButton(driveJoyArtic, 4);
@@ -120,7 +121,12 @@ public class OI {
 	// SmartDashboard.putData("Drive Straight Test", new TestDriveSubsystem());
 	
 	 
-	 SmartDashboard.putData("Arm Voltage 0", new SetArmVoltage(0));
+     SmartDashboard.putData("Arm Voltage 0", new SetArmVoltage(0));
+     SmartDashboard.putData("Arm Voltage 3", new SetArmVoltage(3));
+
+     SmartDashboard.putData("Wrist Voltage - 3", new SetWristPercentOutput(-0.25));
+     SmartDashboard.putData("Wrist Voltage 0", new SetWristPercentOutput(-0));
+
 	 SmartDashboard.putData("Arm Position Vertical", new
 	 SetArmPosition(SuperstructureConstants.kArmVerticalPos));
 	 SmartDashboard.putData("Arm Position Horizontal",
@@ -130,19 +136,20 @@ public class OI {
      
     SmartDashboard.putData("Set intake voltage from dashboard", new SetIntakePowerFromDashboard());
 
-    SmartDashboard.putNumber("Intake -12 V", -12.0/12.0);
-    SmartDashboard.putNumber("Intake -10 V", -10.0/12.0);
-    SmartDashboard.putNumber("Intake -8 V", -8.0/12.0);
-    SmartDashboard.putNumber("Intake -6 V", -6.0/12.0);
-    SmartDashboard.putNumber("Intake -4 V", -4.0/12.0);
-    SmartDashboard.putNumber("Intake -2 V", -2.0/12.0);
-    SmartDashboard.putNumber("Intake -0 V", 0.0/12.0);
-    SmartDashboard.putNumber("Intake 2 V", 2.0/12.0);
-    SmartDashboard.putNumber("Intake 4 V", 4.0/12.0);
-    SmartDashboard.putNumber("Intake 6 V", 6.0/12.0);
-    SmartDashboard.putNumber("Intake 8 V", 8.0/12.0);
-    SmartDashboard.putNumber("Intake 10 V", 10.0/12.0);
-    SmartDashboard.putNumber("Intake 12 V", 12.0/12.0);
+    SmartDashboard.putData("Intake -12 V", new SetIntakeRollerPower(-12.0/12.0));
+    SmartDashboard.putData("Intake -10 V", new SetIntakeRollerPower(-10.0/12.0));
+    SmartDashboard.putData("Intake -8 V", new SetIntakeRollerPower(-8.0/12.0));
+    SmartDashboard.putData("Intake -6 V", new SetIntakeRollerPower(-6.0/12.0));
+    SmartDashboard.putData("Intake -4 V", new SetIntakeRollerPower(-4.0/12.0));
+    SmartDashboard.putData("Intake -2 V", new SetIntakeRollerPower(-2.0/12.0));
+    SmartDashboard.putData("Intake 0 V", new SetIntakeRollerPower(-0.0/12.0));
+    SmartDashboard.putData("Intake 2 V", new SetIntakeRollerPower(2.0/12.0));
+    SmartDashboard.putData("Intake 4 V", new SetIntakeRollerPower(4.0/12.0));
+    SmartDashboard.putData("Intake 6 V", new SetIntakeRollerPower(6.0/12.0));
+    SmartDashboard.putData("Intake 8 V", new SetIntakeRollerPower(8.0/12.0));
+    SmartDashboard.putData("Intake 10 V", new SetIntakeRollerPower(10.0/12.0));
+    SmartDashboard.putData("Intake 12 V", new SetIntakeRollerPower(12.0/12.0));
+
 	
 	// SmartDashboard.putData("Wrist Voltage 0", new SetWristPercentOutput(0));
 	// SmartDashboard.putData("Wrist Position Intake", new
@@ -188,6 +195,8 @@ public class OI {
 //	SmartDashboard.putData("Left To Right Scale", new LeftToRightScaleAuto());
 //	SmartDashboard.putData("Right To Left Scale", new RightToLeftScaleAuto());
 	SmartDashboard.putData("Right to Right Scale Compatible", new RightToRightCompatibleScaleAuto());
+    SmartDashboard.putData("Left to Left Scale Compatible", new LeftToLeftCompatibleScaleAuto());
+    SmartDashboard.putData("EMERGENCY STOW", new DefaultStow());
 
 	// SmartDashboard.putData("Drive Straight Auto", new DriveStraightAuto());
     }

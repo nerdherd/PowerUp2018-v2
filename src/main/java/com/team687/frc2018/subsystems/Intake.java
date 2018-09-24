@@ -28,7 +28,7 @@ public class Intake extends Subsystem {
         m_rollers1.setNeutralMode(NeutralMode.Coast);
         m_rollers1.setStatusFramePeriod(StatusFrame.Status_1_General, 20, 0);
     
-        m_rollers1.setInverted(true);
+        m_rollers1.setInverted(false);
     
         m_rollers1.configPeakOutputForward(1, 0);
         m_rollers1.configPeakOutputReverse(-1, 0);
@@ -44,7 +44,7 @@ public class Intake extends Subsystem {
         m_rollers2.configPeakOutputReverse(-1, 0);
         m_rollers1.enableCurrentLimit(false);
 
-	m_claw = new DoubleSolenoid(RobotMap.kIntakeClawID1, RobotMap.kIntakeClawID2);
+	m_claw = new DoubleSolenoid(RobotMap.kIntakeClawID2, RobotMap.kIntakeClawID1);
     }
 
     @Override

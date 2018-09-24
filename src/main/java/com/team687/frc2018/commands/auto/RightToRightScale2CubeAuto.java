@@ -2,11 +2,12 @@ package com.team687.frc2018.commands.auto;
 
 import com.team687.frc2018.commands.drive.DriveAtHeading;
 import com.team687.frc2018.commands.drive.DriveStraightDistance;
-import com.team687.frc2018.commands.drive.DriveTime;
 import com.team687.frc2018.commands.drive.ResetDriveEncoders;
 import com.team687.frc2018.commands.drive.TurnToAngle;
 import com.team687.frc2018.commands.drive.WaitTime;
-import com.team687.frc2018.commands.intake.SetIntakeRollerPower;
+import com.team687.frc2018.commands.intake.ClawClose;
+import com.team687.frc2018.commands.intake.ClawOpen;
+import com.team687.frc2018.commands.intake.OuttakeRollers;
 import com.team687.frc2018.commands.superstructure.BackwardsScaleToStow;
 import com.team687.frc2018.commands.superstructure.DefaultIntake;
 import com.team687.frc2018.commands.superstructure.DefaultStow;
@@ -25,21 +26,21 @@ public class RightToRightScale2CubeAuto extends CommandGroup {
 	// NerdyMath.inchesToTicks(0.05 *AutoConstants.kRedStartingWallToSwitchInches),
 	// 0.004));
 	addSequential(new DriveAtHeading(-0.9, 180,
-		NerdyMath.inchesToTicks(AutoConstants.kRedStartingWallToSwitchInches), 0.004));
+		NerdyMath.inchesToTicks(0.8 * AutoConstants.kRedStartingWallToSwitchInches), 0.004));
 
 	// curve to scale and score
 	addParallel(new StowToBackwardsScale());
 
 	addSequential(new DriveAtHeading(-0.6, 150,
 		NerdyMath.inchesToTicks(
-			AutoConstants.kRedStartingWallToSwitchInches + 0.5 * AutoConstants.kRedLeftSwitchToFrontScale),
+			0.8 * AutoConstants.kRedStartingWallToSwitchInches + 0.5 * AutoConstants.kRedLeftSwitchToFrontScale),
 		0.002));
 	addSequential(new DriveAtHeading(-0.3, 150,
 		NerdyMath.inchesToTicks(
-			AutoConstants.kRedStartingWallToSwitchInches + 1.2 * AutoConstants.kRedLeftSwitchToFrontScale),
+			0.8 * AutoConstants.kRedStartingWallToSwitchInches + 1.2 * AutoConstants.kRedLeftSwitchToFrontScale),
 		0.004));
 
-	addParallel(new SetIntakeRollerPower(0.2));
+    addParallel(new OuttakeRollers(0.4));
 	addSequential(new WaitTime(0.6));
 
 	// stow and turn
@@ -49,10 +50,12 @@ public class RightToRightScale2CubeAuto extends CommandGroup {
 	addSequential(new ResetDriveEncoders());
 //
 //	// get second cube
+    addSequential(new ClawOpen());
 	addParallel(new DefaultIntake());
 	addSequential(
 		new DriveStraightDistance(NerdyMath.inchesToTicks(AutoConstants.kRobotToSecondCubeScale), 15, 2, 0.5));
-	addSequential(new WaitTime(0.2));
+        addSequential(new ClawClose());
+        addSequential(new WaitTime(0.2));
 	addSequential(new ResetDriveEncoders());
 	addSequential(new DriveStraightDistance(0.7 * -NerdyMath.inchesToTicks(AutoConstants.kRobotToSecondCubeScale),
 		-165, 2, 0.5));
@@ -66,10 +69,10 @@ public class RightToRightScale2CubeAuto extends CommandGroup {
 	// score second cube and stow
 	addParallel(new StowToBackwardsScale());
 	addSequential(new WaitTime(2));
-	addSequential(new DriveTime(-0.5, 0.3));
-	addParallel(new SetIntakeRollerPower(0.2));
+	// addSequential(new DriveTime(-0.5, 0.3));
+	addParallel(new OuttakeRollers(0.5));
 	addSequential(new WaitTime(0.8));
-	addSequential(new DriveTime(0.5, 0.3));
+	// addSequential(new DriveTime(0.5, 0.3));
 	addParallel(new BackwardsScaleToStow());
     }
 

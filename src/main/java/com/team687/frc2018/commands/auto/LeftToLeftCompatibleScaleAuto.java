@@ -23,14 +23,14 @@ public class LeftToLeftCompatibleScaleAuto extends CommandGroup {
 	addSequential(new ResetDriveEncoders());
 	addParallel(new StowToBackwardsScale());
 
-	addSequential(new DriveStraightDistance(NerdyMath.inchesToTicks(0.3 * -AutoConstants.kRedLeftSideWallToScale),
-		-90, 4, 0.4));
-	addSequential(new TurnToAngle(-110, 2, 2));
-	addParallel(new OuttakeRollers(0.7));
+	// addSequential(new DriveStraightDistance(NerdyMath.inchesToTicks(0 * -AutoConstants.kRedLeftSideWallToScale),
+	// 	-90, 4, 0.4));
+	addSequential(new TurnToAngle(70, 2, 2));
+	addParallel(new OuttakeRollers(0.5));
 	addSequential(new WaitTime(0.3));
 	addParallel(new BackwardsScaleToStow());
 	addSequential(new ResetDriveEncoders());
-	addSequential(new DriveStraightDistance(NerdyMath.inchesToTicks(0.3 * AutoConstants.kRedLeftSideWallToScale),
+	addSequential(new DriveStraightDistance(NerdyMath.inchesToTicks(0.254 * AutoConstants.kRedLeftSideWallToScale),
 		90, 4, 0.4));
 	addSequential(new TurnToAngle(-170, 2, 2));
     }

@@ -31,7 +31,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends TimedRobot {
 
-    public static final String kDate = "2018_09_15_";
+    public static final String kDate = "2018_09_23_";
 
     public static Drive drive;
     public static Arm arm;
