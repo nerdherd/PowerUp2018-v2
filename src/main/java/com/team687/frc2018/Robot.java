@@ -19,6 +19,7 @@ import com.team687.frc2018.subsystems.Drive;
 import com.team687.frc2018.subsystems.Intake;
 import com.team687.frc2018.subsystems.Wrist;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
@@ -31,7 +32,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends TimedRobot {
 
-    public static final String kDate = "2018_09_23_";
+    public static final String kDate = "2018_09_29_";
 
     public static Drive drive;
     public static Arm arm;
@@ -53,6 +54,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotInit() {
+    CameraServer.getInstance().startAutomaticCapture();
 	pdp = new PowerDistributionPanel();
 	LiveWindow.disableTelemetry(pdp);
 	compressor = new Compressor();
@@ -111,7 +113,9 @@ public class Robot extends TimedRobot {
 
 	drive.stopLog();
 	arm.stopLog();
-	wrist.stopLog();
+    wrist.stopLog();
+    oi.stopLog();
+    intake.stopLog();
     }
 
     @Override
@@ -218,7 +222,9 @@ public class Robot extends TimedRobot {
 
 	 drive.startLog();
 	 arm.startLog();
-	 wrist.startLog();
+     wrist.startLog();
+     oi.startLog();
+     intake.startLog();
     }
 
     @Override
@@ -240,7 +246,9 @@ public class Robot extends TimedRobot {
 
 	 drive.logToCSV();
 	 arm.logToCSV();
-	 wrist.logToCSV();
+     wrist.logToCSV();
+     oi.logToCSV();
+     intake.logToCSV();
     }
 
     @Override
@@ -260,7 +268,9 @@ public class Robot extends TimedRobot {
 	compressor.start();
 	drive.startLog();
 	arm.startLog();
-	wrist.startLog();
+    wrist.startLog();
+    oi.startLog();
+    intake.startLog();
     }
 
     @Override
@@ -282,7 +292,9 @@ public class Robot extends TimedRobot {
 
 	drive.logToCSV();
 	arm.logToCSV();
-	wrist.logToCSV();
+    wrist.logToCSV();
+    oi.logToCSV();
+    intake.logToCSV();
 
 	if (ds.getMatchTime() < 5) {
 	    Robot.wrist.enableBrakeMode();
