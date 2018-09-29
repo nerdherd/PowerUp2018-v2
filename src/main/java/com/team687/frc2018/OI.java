@@ -109,46 +109,46 @@ public class OI {
 //	sketchyStowToBackwards_12.whenPressed(new StackCubes(55));
 	
 	
-	SmartDashboard.putData("****EMERGENCY WRIST SAVE****", new EmergencyWristSave());
-	SmartDashboard.putData("Stack Cube 0 deg", new StackCubes(0));
-	SmartDashboard.putData("Stack Cube 45 deg", new StackCubes(45));
-	SmartDashboard.putData("Stack Cube 60 deg", new StackCubes(60));
-	 SmartDashboard.putData("Arm Reset Encoder", new ResetArmEncoder());
-	 SmartDashboard.putData("Wrist Reset Encoder", new ResetWristEncoder());
-	 SmartDashboard.putData("Drive Reset Encoders", new ResetDriveEncoders());
-	 SmartDashboard.putData("Drive Reset Gyro", new ResetGyro());
+	// SmartDashboard.putData("****EMERGENCY WRIST SAVE****", new EmergencyWristSave());
+	// SmartDashboard.putData("Stack Cube 0 deg", new StackCubes(0));
+	// SmartDashboard.putData("Stack Cube 45 deg", new StackCubes(45));
+	// SmartDashboard.putData("Stack Cube 60 deg", new StackCubes(60));
+	//  SmartDashboard.putData("Arm Reset Encoder", new ResetArmEncoder());
+	//  SmartDashboard.putData("Wrist Reset Encoder", new ResetWristEncoder());
+	//  SmartDashboard.putData("Drive Reset Encoders", new ResetDriveEncoders());
+	//  SmartDashboard.putData("Drive Reset Gyro", new ResetGyro());
 
-	// SmartDashboard.putData("Drive Straight Test", new TestDriveSubsystem());
+	// // SmartDashboard.putData("Drive Straight Test", new TestDriveSubsystem());
 	
 	 
-     SmartDashboard.putData("Arm Voltage 0", new SetArmVoltage(0));
-     SmartDashboard.putData("Arm Voltage 3", new SetArmVoltage(3));
+    //  SmartDashboard.putData("Arm Voltage 0", new SetArmVoltage(0));
+    //  SmartDashboard.putData("Arm Voltage 3", new SetArmVoltage(3));
 
-     SmartDashboard.putData("Wrist Voltage - 3", new SetWristPercentOutput(-0.25));
-     SmartDashboard.putData("Wrist Voltage 0", new SetWristPercentOutput(-0));
+    //  SmartDashboard.putData("Wrist Voltage - 3", new SetWristPercentOutput(-0.25));
+    //  SmartDashboard.putData("Wrist Voltage 0", new SetWristPercentOutput(-0));
 
-	 SmartDashboard.putData("Arm Position Vertical", new
-	 SetArmPosition(SuperstructureConstants.kArmVerticalPos));
-	 SmartDashboard.putData("Arm Position Horizontal",
-	 new SetArmPosition(SuperstructureConstants.kArmHorizontalPos));
-	 SmartDashboard.putData("Arm Position Offset", new
-     SetArmPosition(SuperstructureConstants.kArmOffsetPos));
+	//  SmartDashboard.putData("Arm Position Vertical", new
+	//  SetArmPosition(SuperstructureConstants.kArmVerticalPos));
+	//  SmartDashboard.putData("Arm Position Horizontal",
+	//  new SetArmPosition(SuperstructureConstants.kArmHorizontalPos));
+	//  SmartDashboard.putData("Arm Position Offset", new
+    //  SetArmPosition(SuperstructureConstants.kArmOffsetPos));
      
-    SmartDashboard.putData("Set intake voltage from dashboard", new SetIntakePowerFromDashboard());
+    // SmartDashboard.putData("Set intake voltage from dashboard", new SetIntakePowerFromDashboard());
 
-    SmartDashboard.putData("Intake -12 V", new SetIntakeRollerPower(-12.0/12.0));
-    SmartDashboard.putData("Intake -10 V", new SetIntakeRollerPower(-10.0/12.0));
-    SmartDashboard.putData("Intake -8 V", new SetIntakeRollerPower(-8.0/12.0));
-    SmartDashboard.putData("Intake -6 V", new SetIntakeRollerPower(-6.0/12.0));
-    SmartDashboard.putData("Intake -4 V", new SetIntakeRollerPower(-4.0/12.0));
-    SmartDashboard.putData("Intake -2 V", new SetIntakeRollerPower(-2.0/12.0));
-    SmartDashboard.putData("Intake 0 V", new SetIntakeRollerPower(-0.0/12.0));
-    SmartDashboard.putData("Intake 2 V", new SetIntakeRollerPower(2.0/12.0));
-    SmartDashboard.putData("Intake 4 V", new SetIntakeRollerPower(4.0/12.0));
-    SmartDashboard.putData("Intake 6 V", new SetIntakeRollerPower(6.0/12.0));
-    SmartDashboard.putData("Intake 8 V", new SetIntakeRollerPower(8.0/12.0));
-    SmartDashboard.putData("Intake 10 V", new SetIntakeRollerPower(10.0/12.0));
-    SmartDashboard.putData("Intake 12 V", new SetIntakeRollerPower(12.0/12.0));
+    // SmartDashboard.putData("Intake -12 V", new SetIntakeRollerPower(-12.0/12.0));
+    // SmartDashboard.putData("Intake -10 V", new SetIntakeRollerPower(-10.0/12.0));
+    // SmartDashboard.putData("Intake -8 V", new SetIntakeRollerPower(-8.0/12.0));
+    // SmartDashboard.putData("Intake -6 V", new SetIntakeRollerPower(-6.0/12.0));
+    // SmartDashboard.putData("Intake -4 V", new SetIntakeRollerPower(-4.0/12.0));
+    // SmartDashboard.putData("Intake -2 V", new SetIntakeRollerPower(-2.0/12.0));
+    // SmartDashboard.putData("Intake 0 V", new SetIntakeRollerPower(-0.0/12.0));
+    // SmartDashboard.putData("Intake 2 V", new SetIntakeRollerPower(2.0/12.0));
+    // SmartDashboard.putData("Intake 4 V", new SetIntakeRollerPower(4.0/12.0));
+    // SmartDashboard.putData("Intake 6 V", new SetIntakeRollerPower(6.0/12.0));
+    // SmartDashboard.putData("Intake 8 V", new SetIntakeRollerPower(8.0/12.0));
+    // SmartDashboard.putData("Intake 10 V", new SetIntakeRollerPower(10.0/12.0));
+    // SmartDashboard.putData("Intake 12 V", new SetIntakeRollerPower(12.0/12.0));
 
 	
 	// SmartDashboard.putData("Wrist Voltage 0", new SetWristPercentOutput(0));
@@ -170,7 +170,7 @@ public class OI {
 	// StowToBackwardsScale());
 	// SmartDashboard.putData("Superstructure Stow to Forwards Scale", new
 	// StowToForwardsScale());
-	SmartDashboard.putData("Superstructure Backwards Scale To Stow", new BackwardsScaleToStow());
+	// SmartDashboard.putData("Superstructure Backwards Scale To Stow", new BackwardsScaleToStow());
 	// SmartDashboard.putData("Superstructure Forwards Scale to Stow", new
 	// ForwardsScaleToStow());
 	//
@@ -187,16 +187,16 @@ public class OI {
 	// SmartDashboard.putData("Turn To 20", new TurnToAngle(20, 4, 2));
 	// SmartDashboard.putData("Turn To -20", new TurnToAngle(-20, 4, 2));
 
-	SmartDashboard.putData("Center To Left Switch", new CenterToLeftSwitchAuto());
-	SmartDashboard.putData("Center To Right Switch", new CenterToRightSwitchAuto());
-	SmartDashboard.putData("Left To Left 2 Cube Scale", new LeftToLeftScale2CubeAuto());
-	SmartDashboard.putData("Right To Right 2 Cube Scale", new RightToRightScale2CubeAuto());
-	SmartDashboard.putData("Right to Right 3 cube Scale", new RightToRightScale3CubeAuto());
+	// SmartDashboard.putData("Center To Left Switch", new CenterToLeftSwitchAuto());
+	// SmartDashboard.putData("Center To Right Switch", new CenterToRightSwitchAuto());
+	// SmartDashboard.putData("Left To Left 2 Cube Scale", new LeftToLeftScale2CubeAuto());
+	// SmartDashboard.putData("Right To Right 2 Cube Scale", new RightToRightScale2CubeAuto());
+	// SmartDashboard.putData("Right to Right 3 cube Scale", new RightToRightScale3CubeAuto());
 //	SmartDashboard.putData("Left To Right Scale", new LeftToRightScaleAuto());
 //	SmartDashboard.putData("Right To Left Scale", new RightToLeftScaleAuto());
-	SmartDashboard.putData("Right to Right Scale Compatible", new RightToRightCompatibleScaleAuto());
-    SmartDashboard.putData("Left to Left Scale Compatible", new LeftToLeftCompatibleScaleAuto());
-    SmartDashboard.putData("EMERGENCY STOW", new DefaultStow());
+	// SmartDashboard.putData("Right to Right Scale Compatible", new RightToRightCompatibleScaleAuto());
+    // SmartDashboard.putData("Left to Left Scale Compatible", new LeftToLeftCompatibleScaleAuto());
+    // SmartDashboard.putData("EMERGENCY STOW", new DefaultStow());
 
 	// SmartDashboard.putData("Drive Straight Auto", new DriveStraightAuto());
     }
