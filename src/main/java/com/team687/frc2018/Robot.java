@@ -113,7 +113,9 @@ public class Robot extends TimedRobot {
 
 	drive.stopLog();
 	arm.stopLog();
-	wrist.stopLog();
+    wrist.stopLog();
+    oi.stopLog();
+    intake.stopLog();
     }
 
     @Override
@@ -220,7 +222,9 @@ public class Robot extends TimedRobot {
 
 	 drive.startLog();
 	 arm.startLog();
-	 wrist.startLog();
+     wrist.startLog();
+     oi.startLog();
+     intake.startLog();
     }
 
     @Override
@@ -242,7 +246,9 @@ public class Robot extends TimedRobot {
 
 	 drive.logToCSV();
 	 arm.logToCSV();
-	 wrist.logToCSV();
+     wrist.logToCSV();
+     oi.logToCSV();
+     intake.logToCSV();
     }
 
     @Override
@@ -262,7 +268,9 @@ public class Robot extends TimedRobot {
 	compressor.start();
 	drive.startLog();
 	arm.startLog();
-	wrist.startLog();
+    wrist.startLog();
+    oi.startLog();
+    intake.startLog();
     }
 
     @Override
@@ -284,7 +292,9 @@ public class Robot extends TimedRobot {
 
 	drive.logToCSV();
 	arm.logToCSV();
-	wrist.logToCSV();
+    wrist.logToCSV();
+    oi.logToCSV();
+    intake.logToCSV();
 
 	if (ds.getMatchTime() < 5) {
 	    Robot.wrist.enableBrakeMode();

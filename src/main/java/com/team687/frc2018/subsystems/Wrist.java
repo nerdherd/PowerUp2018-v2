@@ -112,7 +112,7 @@ public class Wrist extends Subsystem {
 
     public double getDesiredAngle() {
 	return ticksToDegrees(m_desiredPos + 280 + 2560) + 52;
-    }
+    };
 
     public double getAngleAbsolute() {
 	return getAngleRelative() + Robot.arm.getAngleAbsolute();

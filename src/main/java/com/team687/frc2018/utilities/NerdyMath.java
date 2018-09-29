@@ -181,4 +181,8 @@ public class NerdyMath {
 	return error;
     }
 
+    public static int boolToInt(boolean b) {
+        return (b? 1 : 0);
+    }
+
 }
