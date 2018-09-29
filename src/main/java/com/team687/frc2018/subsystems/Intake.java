@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Intake extends Subsystem {
 
-    private final TalonSRX m_rollers1, m_rollers2;
+    private final TalonSRX m_rollers1;
     private final DoubleSolenoid m_claw;
 
     public Intake() {
@@ -32,16 +32,6 @@ public class Intake extends Subsystem {
     
         m_rollers1.configPeakOutputForward(1, 0);
         m_rollers1.configPeakOutputReverse(-1, 0);
-        m_rollers1.enableCurrentLimit(false);
-
-        m_rollers2 = new TalonSRX(RobotMap.kIntakeRollers2ID);
-        m_rollers2.setNeutralMode(NeutralMode.Coast);
-        m_rollers2.setStatusFramePeriod(StatusFrame.Status_1_General, 20, 0);
-    
-        m_rollers2.setInverted(true);
-    
-        m_rollers2.configPeakOutputForward(1, 0);
-        m_rollers2.configPeakOutputReverse(-1, 0);
         m_rollers1.enableCurrentLimit(false);
 
 	m_claw = new DoubleSolenoid(RobotMap.kIntakeClawID2, RobotMap.kIntakeClawID1);
@@ -74,7 +64,6 @@ public class Intake extends Subsystem {
 
     public void setRollerPower(double power) {
         m_rollers1.set(ControlMode.PercentOutput, power);
-        m_rollers2.set(ControlMode.PercentOutput, power);
     }
 
     public double getVoltage() {
