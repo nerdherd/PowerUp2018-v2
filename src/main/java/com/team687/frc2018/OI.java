@@ -6,13 +6,21 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import com.team687.frc2018.commands.auto.CenterToLeftSwitchAuto;
+import com.team687.frc2018.commands.auto.CenterToRightSwitchAuto;
+import com.team687.frc2018.commands.auto.LeftToLeftCompatibleScaleAuto;
+import com.team687.frc2018.commands.auto.LeftToLeftScale2CubeAuto;
+import com.team687.frc2018.commands.auto.LeftToRightScaleAuto;
+import com.team687.frc2018.commands.auto.RightToLeftScaleAuto;
+import com.team687.frc2018.commands.auto.RightToRightCompatibleScaleAuto;
+import com.team687.frc2018.commands.auto.RightToRightScale2CubeAuto;
+import com.team687.frc2018.commands.auto.RightToRightScale3CubeAuto;
 import com.team687.frc2018.commands.intake.ClawClose;
 import com.team687.frc2018.commands.intake.ClawOpen;
 import com.team687.frc2018.commands.intake.SetIntakeRollerPower;
 import com.team687.frc2018.commands.superstructure.AdjustForwardsScale;
 import com.team687.frc2018.commands.superstructure.DefaultIntake;
 import com.team687.frc2018.commands.superstructure.DefaultStow;
-import com.team687.frc2018.commands.superstructure.FlipCube;
 import com.team687.frc2018.commands.superstructure.IntakeSequenceCurrent;
 import com.team687.frc2018.commands.superstructure.StowToForwardsScale;
 import com.team687.frc2018.commands.superstructure.SwitchScorePositionTeleop;
@@ -69,7 +77,7 @@ public class OI {
 	intake_1.whenPressed(new DefaultIntake());
 	
 	outtake_2 = new JoystickButton(driveJoyArtic, 2);
-	outtake_2.whenPressed(new SetIntakeRollerPower(0.45));
+	outtake_2.whenPressed(new SetIntakeRollerPower(0.35));
 	stopIntake_3 = new JoystickButton(driveJoyArtic, 3);
 	stopIntake_3.whenPressed(new SetIntakeRollerPower(0));
 	openCloseClaw_4 = new JoystickButton(driveJoyArtic, 4);
@@ -98,7 +106,7 @@ public class OI {
 	closeClaw_5 = new JoystickButton(driveJoyArtic, 6);
 	closeClaw_5.whenPressed(new ClawClose());
     flipCube_12 = new JoystickButton(driveJoyArtic, 12);
-    flipCube_12.whenPressed(new FlipCube());
+    // flipCube_12.whenPressed(new FlipCube());
 
 	// sketchyStowToBackwards_12 = new JoystickButton(driveJoyArtic, 12);
 	// sketchyStowToBackwards_12.whenPressed(new StowToBackwardsScale());
@@ -184,16 +192,16 @@ public class OI {
 	// SmartDashboard.putData("Turn To 20", new TurnToAngle(20, 4, 2));
 	// SmartDashboard.putData("Turn To -20", new TurnToAngle(-20, 4, 2));
 
-	// SmartDashboard.putData("Center To Left Switch", new CenterToLeftSwitchAuto());
-	// SmartDashboard.putData("Center To Right Switch", new CenterToRightSwitchAuto());
-	// SmartDashboard.putData("Left To Left 2 Cube Scale", new LeftToLeftScale2CubeAuto());
-	// SmartDashboard.putData("Right To Right 2 Cube Scale", new RightToRightScale2CubeAuto());
-	// SmartDashboard.putData("Right to Right 3 cube Scale", new RightToRightScale3CubeAuto());
-//	SmartDashboard.putData("Left To Right Scale", new LeftToRightScaleAuto());
-//	SmartDashboard.putData("Right To Left Scale", new RightToLeftScaleAuto());
-	// SmartDashboard.putData("Right to Right Scale Compatible", new RightToRightCompatibleScaleAuto());
-    // SmartDashboard.putData("Left to Left Scale Compatible", new LeftToLeftCompatibleScaleAuto());
-    // SmartDashboard.putData("EMERGENCY STOW", new DefaultStow());
+	SmartDashboard.putData("Center To Left Switch", new CenterToLeftSwitchAuto());
+	SmartDashboard.putData("Center To Right Switch", new CenterToRightSwitchAuto());
+	SmartDashboard.putData("Left To Left 2 Cube Scale", new LeftToLeftScale2CubeAuto());
+	SmartDashboard.putData("Right To Right 2 Cube Scale", new RightToRightScale2CubeAuto());
+	SmartDashboard.putData("Right to Right 3 cube Scale", new RightToRightScale3CubeAuto());
+	SmartDashboard.putData("Left To Right Scale", new LeftToRightScaleAuto());
+	SmartDashboard.putData("Right To Left Scale", new RightToLeftScaleAuto());
+	SmartDashboard.putData("Right to Right Scale Compatible", new RightToRightCompatibleScaleAuto());
+    SmartDashboard.putData("Left to Left Scale Compatible", new LeftToLeftCompatibleScaleAuto());
+    SmartDashboard.putData("EMERGENCY STOW", new DefaultStow());
 
 	// SmartDashboard.putData("Drive Straight Auto", new DriveStraightAuto());
     }

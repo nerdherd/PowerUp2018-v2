@@ -44,7 +44,9 @@ public class Intake extends Subsystem {
         m_rollers1.setStatusFramePeriod(StatusFrame.Status_1_General, 20, 0);
     
         m_rollers1.setInverted(false);
-    
+        m_rollers1.configPeakCurrentLimit(SuperstructureConstants.kRollerPeakCurrent, 0);
+	    m_rollers1.configContinuousCurrentLimit(SuperstructureConstants.kRollerMaxCurrent, 0);
+     
         m_rollers1.configPeakOutputForward(1, 0);
         m_rollers1.configPeakOutputReverse(-1, 0);
         m_rollers1.enableCurrentLimit(false);
