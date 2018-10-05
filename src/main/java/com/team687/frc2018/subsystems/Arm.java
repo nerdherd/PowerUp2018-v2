@@ -206,7 +206,7 @@ public class Arm extends Subsystem {
 	    }
 	    try {
 		m_writer = new FileWriter(m_file);
-		m_writer.append("Time,MatchTime,Position,Velocity,EncoderAngle,Voltage,Current\n");
+		m_writer.append("Time,MatchTime,Position,Velocity,EncoderAngle,Voltage,Current,DesiredPos\n");
 		m_logStartTime = Timer.getFPGATimestamp();
 	    } catch (IOException e) {
 		e.printStackTrace();
@@ -232,7 +232,7 @@ public class Arm extends Subsystem {
 		m_writer.append(String.valueOf(timestamp) + "," + String.valueOf(Robot.ds.getMatchTime()) + ","
 			+ String.valueOf(getPosition()) + "," + String.valueOf(getVelocity()) + ","
 			+ String.valueOf(getAngleAbsolute()) + "," + String.valueOf(getVoltage()) + ","
-			+ String.valueOf(getCurrent()) + "\n");
+			+ String.valueOf(getCurrent()) + "," + m_desiredPos + "," + "\n");
 		m_writer.flush();
 	    } catch (IOException e) {
 		e.printStackTrace();
