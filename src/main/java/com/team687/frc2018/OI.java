@@ -77,7 +77,7 @@ public class OI {
 	intake_1.whenPressed(new DefaultIntake());
 	
 	outtake_2 = new JoystickButton(driveJoyArtic, 2);
-	outtake_2.whenPressed(new SetIntakeRollerPower(0.35));
+	outtake_2.whenPressed(new SetIntakeRollerPower(0.5));
 	stopIntake_3 = new JoystickButton(driveJoyArtic, 3);
 	stopIntake_3.whenPressed(new SetIntakeRollerPower(0));
 	openCloseClaw_4 = new JoystickButton(driveJoyArtic, 4);

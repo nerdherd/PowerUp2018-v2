@@ -39,7 +39,7 @@ public class FlipCube extends Command {
         Robot.intake.setRollerPower(1);
     } 
     else {  
-        Robot.wrist.setPosition(SuperstructureConstants.kWristFlipCubePos);
+        // Robot.wrist.setPosition(SuperstructureConstants.kWristFlipCubePos);
     }
   }
 

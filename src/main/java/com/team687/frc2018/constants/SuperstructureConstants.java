@@ -67,7 +67,7 @@ public class SuperstructureConstants {
 
     public static final double kRollerPower = 0.5;
     public static final int kRollerMaxCurrent = 25;
-    public static final int kRollerPeakCurrent = 50;
+    public static final int kRollerPeakCurrent = 40;
     public static final double kRollerOuttakeTime = 3.3;
 
     public static final double kArmSafeCurrent = 40;
