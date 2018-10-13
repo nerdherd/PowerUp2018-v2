@@ -30,14 +30,12 @@ public class CenterToRightSwitchAuto extends CommandGroup {
 	addSequential(new ResetDriveEncoders());
 
 	addSequential(new DriveBezierPath(AutoConstants.kRedRightSwitchToCenterPath, -0.5, 0.008, 0.001, false));
-    addSequential(new ClawOpen());
     addParallel(new DefaultIntake());
-	// addSequential(new WaitTime(0.1));
+	addSequential(new WaitTime(0.1));
 	addSequential(new ResetDriveEncoders());
 	addSequential(
         new DriveStraightDistance(NerdyMath.inchesToTicks(AutoConstants.kRobotToSecondCubeSwitch), 0, 3, 0.5));
     addSequential(new ClawClose());
-    addSequential(new IntakeSequenceCurrent());
 	addParallel(new DefaultStow());
 	addSequential(new ResetDriveEncoders());
 	addSequential(new DriveStraightDistance(NerdyMath.inchesToTicks(-AutoConstants.kRobotToSecondCubeSwitch * 1.25),

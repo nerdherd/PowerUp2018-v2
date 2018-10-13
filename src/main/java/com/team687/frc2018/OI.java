@@ -17,11 +17,14 @@ import com.team687.frc2018.commands.auto.RightToRightScale2CubeAuto;
 import com.team687.frc2018.commands.auto.RightToRightScale3CubeAuto;
 import com.team687.frc2018.commands.intake.ClawClose;
 import com.team687.frc2018.commands.intake.ClawOpen;
+import com.team687.frc2018.commands.intake.OuttakeRollers;
 import com.team687.frc2018.commands.intake.SetIntakeRollerPower;
 import com.team687.frc2018.commands.superstructure.AdjustForwardsScale;
+import com.team687.frc2018.commands.superstructure.BackwardsScaleToStow;
 import com.team687.frc2018.commands.superstructure.DefaultIntake;
 import com.team687.frc2018.commands.superstructure.DefaultStow;
 import com.team687.frc2018.commands.superstructure.IntakeSequenceCurrent;
+import com.team687.frc2018.commands.superstructure.StowToBackwardsScale;
 import com.team687.frc2018.commands.superstructure.StowToForwardsScale;
 import com.team687.frc2018.commands.superstructure.SwitchScorePositionTeleop;
 import com.team687.frc2018.constants.SuperstructureConstants;
@@ -113,7 +116,8 @@ public class OI {
 	
 //	sketchyStowToBackwards_12.whenPressed(new StackCubes(55));
 	
-	
+    SmartDashboard.putData(new OuttakeRollers(0.5));
+
 	// SmartDashboard.putData("****EMERGENCY WRIST SAVE****", new EmergencyWristSave());
 	// SmartDashboard.putData("Stack Cube 0 deg", new StackCubes(0));
 	// SmartDashboard.putData("Stack Cube 45 deg", new StackCubes(45));
@@ -171,11 +175,11 @@ public class OI {
 	// SmartDashboard.putData("Open Intake Claw", new ClawOpen());
 	// SmartDashboard.putData("Close Intake Claw", new ClawClose());
 
-	// SmartDashboard.putData("Superstructure Stow to Backwards Scale", new
-	// StowToBackwardsScale());
+	SmartDashboard.putData("Superstructure Stow to Backwards Scale", new
+	StowToBackwardsScale());
 	// SmartDashboard.putData("Superstructure Stow to Forwards Scale", new
 	// StowToForwardsScale());
-	// SmartDashboard.putData("Superstructure Backwards Scale To Stow", new BackwardsScaleToStow());
+	SmartDashboard.putData("Superstructure Backwards Scale To Stow", new BackwardsScaleToStow());
 	// SmartDashboard.putData("Superstructure Forwards Scale to Stow", new
 	// ForwardsScaleToStow());
 	//

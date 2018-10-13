@@ -4,6 +4,7 @@ import com.team687.frc2018.commands.drive.DriveBezierPath;
 import com.team687.frc2018.commands.drive.DriveStraightDistance;
 import com.team687.frc2018.commands.drive.DriveTime;
 import com.team687.frc2018.commands.drive.ResetDriveEncoders;
+import com.team687.frc2018.commands.drive.WaitTime;
 import com.team687.frc2018.commands.intake.ClawClose;
 import com.team687.frc2018.commands.intake.ClawOpen;
 import com.team687.frc2018.commands.intake.OuttakeRollers;
@@ -27,14 +28,12 @@ public class CenterToLeftSwitchAuto extends CommandGroup {
 	addSequential(new ResetDriveEncoders());
 
 	addSequential(new DriveBezierPath(AutoConstants.kRedLeftSwitchToCenterPath, -0.5, 0.008, 0.001, false));
-    addSequential(new ClawOpen());
     addParallel(new DefaultIntake());
-	// addSequential(new WaitTime(0.1));
+	addSequential(new WaitTime(0.1));
 	addSequential(new ResetDriveEncoders());
 	addSequential(
-        new DriveStraightDistance(NerdyMath.inchesToTicks(AutoConstants.kRobotToSecondCubeSwitch), 0, 3, 0.5));
-    addSequential(new ClawClose());
-    addSequential(new IntakeSequenceCurrent());
+        new DriveStraightDistance(NerdyMath.inchesToTicks(AutoConstants.kRobotToSecondCubeSwitch), -10, 3, 0.5));
+    addSequential(new WaitTime(0.2));
     addParallel(new DefaultStow());
 	addSequential(new ResetDriveEncoders());
 	addSequential(new DriveStraightDistance(NerdyMath.inchesToTicks(-AutoConstants.kRobotToSecondCubeSwitch * 1.25),

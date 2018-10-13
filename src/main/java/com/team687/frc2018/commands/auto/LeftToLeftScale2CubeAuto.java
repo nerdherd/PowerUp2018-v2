@@ -41,7 +41,7 @@ public class LeftToLeftScale2CubeAuto extends CommandGroup {
 			0.8 * AutoConstants.kRedStartingWallToSwitchInches + 1.2 * AutoConstants.kRedLeftSwitchToFrontScale),
 		0.004));
 
-	addParallel(new OuttakeRollers(0.3476));
+	addParallel(new OuttakeRollers(0.5476));
 	addSequential(new WaitTime(0.6));
 
 	// stow and turn
@@ -51,15 +51,12 @@ public class LeftToLeftScale2CubeAuto extends CommandGroup {
 	addSequential(new ResetDriveEncoders());
 
     // get second cube
-    addSequential(new ClawOpen());
     addParallel(new DefaultIntake());
     addSequential(new WaitTime(0.3));
 	addSequential(
 		new DriveStraightDistance(0.862 * NerdyMath.inchesToTicks(AutoConstants.kRobotToSecondCubeScale), -15, 2, 0.5));
-    addSequential(new ClawClose());
     addSequential(new WaitTime(0.2));
     addSequential(new ResetDriveEncoders());
-    addSequential(new IntakeSequenceCurrent());
 	addSequential(new DriveStraightDistance(0.7 * 0.862 * -NerdyMath.inchesToTicks(AutoConstants.kRobotToSecondCubeScale),
 		-195, 2, 0.5));
 
