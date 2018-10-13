@@ -43,7 +43,7 @@ public class RightToRightScale2CubeAuto extends CommandGroup {
 		0.004));
 
     addParallel(new OuttakeRollers(0.6));
-	addSequential(new WaitTime(0.6));
+	addSequential(new WaitTime(1));
 
 	// stow and turn
 	addParallel(new BackwardsScaleToStow());

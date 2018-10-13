@@ -30,8 +30,8 @@ public class RightToRightCompatibleScaleAuto extends CommandGroup {
 		90, 4, 0.3));
     addSequential(new TurnToAngle(-70, 2, 2));
     addSequential(new WaitTime(0.3));
-	addParallel(new OuttakeRollers(0.5));
-    addSequential(new WaitTime(0.3));
+	addParallel(new OuttakeRollers(0.6));
+    addSequential(new WaitTime(0.6));
 	addParallel(new BackwardsScaleToStow());
 	addSequential(new ResetDriveEncoders());
 	addSequential(new DriveStraightDistance(NerdyMath.inchesToTicks(0.254 * AutoConstants.kRedRightSideWallToScale),

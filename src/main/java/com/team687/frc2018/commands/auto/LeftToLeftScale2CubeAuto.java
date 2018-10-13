@@ -41,8 +41,8 @@ public class LeftToLeftScale2CubeAuto extends CommandGroup {
 			0.8 * AutoConstants.kRedStartingWallToSwitchInches + 1.2 * AutoConstants.kRedLeftSwitchToFrontScale),
 		0.004));
 
-	addParallel(new OuttakeRollers(0.5476));
-	addSequential(new WaitTime(0.6));
+	addParallel(new OuttakeRollers(0.6));
+	addSequential(new WaitTime(1));
 
 	// stow and turn
 	addParallel(new BackwardsScaleToStow());
