@@ -49,7 +49,7 @@ public class Intake extends Subsystem {
      
         m_rollers1.configPeakOutputForward(1, 0);
         m_rollers1.configPeakOutputReverse(-1, 0);
-        m_rollers1.enableCurrentLimit(true);
+        m_rollers1.enableCurrentLimit(false);
 
 	m_claw = new DoubleSolenoid(RobotMap.kIntakeClawID2, RobotMap.kIntakeClawID1);
     }

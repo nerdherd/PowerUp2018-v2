@@ -70,8 +70,8 @@ public class LeftToLeftScale2CubeAuto extends CommandGroup {
 	addParallel(new StowToBackwardsScale());
 	addSequential(new WaitTime(2));
 	// addSequential(new DriveTime(-0.5, 0.3));
-	addParallel(new OuttakeRollers(0.5));
-	addSequential(new WaitTime(0.8));
+	addParallel(new OuttakeRollers(0.6));
+	addSequential(new WaitTime(1));
 	// addSequential(new DriveTime(0.5, 0.3));
 	addParallel(new BackwardsScaleToStow());
     }

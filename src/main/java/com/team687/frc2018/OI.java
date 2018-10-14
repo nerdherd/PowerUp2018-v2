@@ -71,7 +71,8 @@ public class OI {
     public JoystickButton openClaw_6;
     public JoystickButton closeClaw_5;
     
-    public JoystickButton flipCube_12;
+    // public JoystickButton flipCube_12;
+    public JoystickButton backupStow_12;
     
     // public JoystickButton sketchyStowToBackwards_12;
 
@@ -108,8 +109,10 @@ public class OI {
 	openClaw_6.whenPressed(new ClawOpen());
 	closeClaw_5 = new JoystickButton(driveJoyArtic, 6);
 	closeClaw_5.whenPressed(new ClawClose());
-    flipCube_12 = new JoystickButton(driveJoyArtic, 12);
+    // flipCube_12 = new JoystickButton(driveJoyArtic, 12);
     // flipCube_12.whenPressed(new FlipCube());
+    backupStow_12 = new JoystickButton(driveJoyArtic, 12);
+    backupStow_12.whenPressed(new DefaultStow());
 
 	// sketchyStowToBackwards_12 = new JoystickButton(driveJoyArtic, 12);
 	// sketchyStowToBackwards_12.whenPressed(new StowToBackwardsScale());

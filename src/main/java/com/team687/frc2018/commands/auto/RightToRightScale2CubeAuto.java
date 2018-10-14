@@ -40,8 +40,8 @@ public class RightToRightScale2CubeAuto extends CommandGroup {
 	addSequential(new DriveAtHeading(-0.3, 150,
 		NerdyMath.inchesToTicks(
 			0.8 * AutoConstants.kRedStartingWallToSwitchInches + 1.3 * AutoConstants.kRedLeftSwitchToFrontScale),
-		0.004));
-
+        0.004));
+    
     addParallel(new OuttakeRollers(0.6));
 	addSequential(new WaitTime(1));
 
@@ -74,10 +74,10 @@ public class RightToRightScale2CubeAuto extends CommandGroup {
     // score second cube and stow
     
 	addParallel(new StowToBackwardsScale());
-	addSequential(new WaitTime(2));
+	addSequential(new WaitTime(3));
 	// addSequential(new DriveTime(-0.5, 0.3));
-	addParallel(new OuttakeRollers(0.75));
-	addSequential(new WaitTime(0.8));
+	addParallel(new OuttakeRollers(0.6));
+	addSequential(new WaitTime(1));
 	// addSequential(new DriveTime(0.5, 0.3));
 	addParallel(new BackwardsScaleToStow());
     }

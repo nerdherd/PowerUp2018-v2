@@ -435,7 +435,7 @@ public class Drive extends Subsystem {
 	    }
 	    try {
 		m_writer = new FileWriter(m_file);
-		m_writer.append("Time,MatchTime,RightPosition,LeftPosition,RightVelocity,LeftVelocity,Yaw"
+		m_writer.append("Time,MatchTime,RightPosition,LeftPosition,RightVelocity,LeftVelocity,Yaw,"
 			+ "RightMasterVoltage,RightSlaveVoltage,LeftMasterVoltage,LeftSlaveVoltage,"
 			+ "RightMasterCurrent,RightSlaveCurrent,LeftMasterCurrent,LeftSlaveCurrent,ScaleOnLeft,SwitchOnLeft,BezierDesiredYaw,BezierError,BezierRotPower\n");
 		m_logStartTime = Timer.getFPGATimestamp();
@@ -468,8 +468,8 @@ public class Drive extends Subsystem {
 			+ String.valueOf(getRightSlaveVoltage()) + "," + String.valueOf(getLeftMasterVoltage()) + ","
 			+ String.valueOf(getLeftSlaveVoltage()) + "," + String.valueOf(getRightMasterCurrent()) + ","
 			+ String.valueOf(getRightSlaveCurrent()) + "," + String.valueOf(getLeftMasterCurrent()) + ","
-			+ String.valueOf(getLeftSlaveCurrent()) + "," + String.valueOf(Robot.scaleOnLeft) + "," + String.valueOf(Robot.switchOnLeft) + 
-			"," + String.valueOf(m_bezierDesiredYaw) + ","
+            + String.valueOf(getLeftSlaveCurrent()) + "," + String.valueOf(NerdyMath.boolToInt(Robot.scaleOnLeft)) + ","
+            + String.valueOf(NerdyMath.boolToInt(Robot.switchOnLeft)) + "," + String.valueOf(m_bezierDesiredYaw) + ","
 					+ String.valueOf(m_bezierRotError) + "," + String.valueOf(m_bezierRotPower) + "\n");
 //		m_writer.flush();
 	    } catch (IOException e) {

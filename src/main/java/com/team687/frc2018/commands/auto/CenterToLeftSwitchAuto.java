@@ -33,7 +33,7 @@ public class CenterToLeftSwitchAuto extends CommandGroup {
 	addSequential(new ResetDriveEncoders());
 	addSequential(
         new DriveStraightDistance(NerdyMath.inchesToTicks(AutoConstants.kRobotToSecondCubeSwitch), -10, 3, 0.5));
-    addSequential(new WaitTime(0.2));
+    addSequential(new WaitTime(1));
     addParallel(new DefaultStow());
 	addSequential(new ResetDriveEncoders());
 	addSequential(new DriveStraightDistance(NerdyMath.inchesToTicks(-AutoConstants.kRobotToSecondCubeSwitch * 1.25),
@@ -45,7 +45,7 @@ public class CenterToLeftSwitchAuto extends CommandGroup {
 		AutoConstants.kRobotOriginY, AutoConstants.kRobotCenterOriginX, AutoConstants.kRedSwitchFrontY / 2,
 		AutoConstants.kRedSwitchLeftX, AutoConstants.kRedSwitchFrontY / 3, AutoConstants.kRedSwitchLeftX,
 		AutoConstants.kRedSwitchFrontY), 0.5, 0.008, 0.001, false));
-	addParallel(new OuttakeRollers(0.254));
+	addParallel(new OuttakeRollers(0.3));
 	addSequential(new DriveTime(0.5, 0.5));
     }
 }
