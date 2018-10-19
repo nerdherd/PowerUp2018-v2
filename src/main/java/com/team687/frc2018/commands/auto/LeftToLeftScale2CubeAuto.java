@@ -27,22 +27,22 @@ public class LeftToLeftScale2CubeAuto extends CommandGroup {
 	// NerdyMath.inchesToTicks(0.05 *AutoConstants.kRedStartingWallToSwitchInches),
 	// 0.004));
 	addSequential(new DriveAtHeading(-0.9, 180,
-		NerdyMath.inchesToTicks(0.8 * AutoConstants.kRedStartingWallToSwitchInches), 0.004));
+		NerdyMath.inchesToTicks(0.85 * AutoConstants.kRedStartingWallToSwitchInches), 0.004));
 
 	// curve to scale and score
 	addParallel(new StowToBackwardsScale());
 
-	addSequential(new DriveAtHeading(-0.6, 205,
+	addSequential(new DriveAtHeading(-0.6, 200,
 		NerdyMath.inchesToTicks(
 			0.8 * AutoConstants.kRedStartingWallToSwitchInches + 0.5 * AutoConstants.kRedLeftSwitchToFrontScale),
 		0.002));
-	addSequential(new DriveAtHeading(-0.3, 205,
+	addSequential(new DriveAtHeading(-0.3, 200,
 		NerdyMath.inchesToTicks(
 			0.8 * AutoConstants.kRedStartingWallToSwitchInches + 1.2 * AutoConstants.kRedLeftSwitchToFrontScale),
 		0.004));
 
 	addParallel(new OuttakeRollers(0.6));
-	addSequential(new WaitTime(1));
+	addSequential(new WaitTime(0.7));
 
 	// stow and turn
 	addParallel(new BackwardsScaleToStow());

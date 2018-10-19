@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import com.team687.frc2018.commands.arm.ResetArmEncoder;
 import com.team687.frc2018.commands.auto.CenterToLeftSwitchAuto;
 import com.team687.frc2018.commands.auto.CenterToRightSwitchAuto;
 import com.team687.frc2018.commands.auto.LeftToLeftCompatibleScaleAuto;
@@ -24,9 +25,11 @@ import com.team687.frc2018.commands.superstructure.BackwardsScaleToStow;
 import com.team687.frc2018.commands.superstructure.DefaultIntake;
 import com.team687.frc2018.commands.superstructure.DefaultStow;
 import com.team687.frc2018.commands.superstructure.IntakeSequenceCurrent;
+import com.team687.frc2018.commands.superstructure.RezeroingSequence;
 import com.team687.frc2018.commands.superstructure.StowToBackwardsScale;
 import com.team687.frc2018.commands.superstructure.StowToForwardsScale;
 import com.team687.frc2018.commands.superstructure.SwitchScorePositionTeleop;
+import com.team687.frc2018.commands.wrist.ResetWristEncoder;
 import com.team687.frc2018.constants.SuperstructureConstants;
 import com.team687.frc2018.utilities.NerdyMath;
 
@@ -120,6 +123,10 @@ public class OI {
 //	sketchyStowToBackwards_12.whenPressed(new StackCubes(55));
 	
     SmartDashboard.putData(new OuttakeRollers(0.5));
+
+    // SmartDashboard.putData(new RezeroingSequence());
+    // SmartDashboard.putData(new ResetArmEncoder());
+    // SmartDashboard.putData(new ResetWristEncoder());
 
 	// SmartDashboard.putData("****EMERGENCY WRIST SAVE****", new EmergencyWristSave());
 	// SmartDashboard.putData("Stack Cube 0 deg", new StackCubes(0));
