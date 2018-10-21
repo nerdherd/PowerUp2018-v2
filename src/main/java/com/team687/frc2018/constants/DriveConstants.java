@@ -33,7 +33,7 @@ public class DriveConstants {
     public final static double kLeftVelocityD = 0;
 
     public final static double kMaxVelocity = 3150; // max velocity on ground
-    public final static double kLeftAdjustment = 0.95;
+    public final static double kLeftAdjustment = 0.97;
     // public final static double kLeftAdjustment = 1;
 
     // Distance PID

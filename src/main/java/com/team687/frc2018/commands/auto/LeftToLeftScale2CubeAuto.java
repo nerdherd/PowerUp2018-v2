@@ -27,22 +27,22 @@ public class LeftToLeftScale2CubeAuto extends CommandGroup {
 	// NerdyMath.inchesToTicks(0.05 *AutoConstants.kRedStartingWallToSwitchInches),
 	// 0.004));
 	addSequential(new DriveAtHeading(-0.9, 180,
-		NerdyMath.inchesToTicks(0.8 * AutoConstants.kRedStartingWallToSwitchInches), 0.004));
+		NerdyMath.inchesToTicks(0.85 * AutoConstants.kRedStartingWallToSwitchInches), 0.004));
 
 	// curve to scale and score
 	addParallel(new StowToBackwardsScale());
 
-	addSequential(new DriveAtHeading(-0.6, 205,
+	addSequential(new DriveAtHeading(-0.6, 200,
 		NerdyMath.inchesToTicks(
 			0.8 * AutoConstants.kRedStartingWallToSwitchInches + 0.5 * AutoConstants.kRedLeftSwitchToFrontScale),
 		0.002));
-	addSequential(new DriveAtHeading(-0.3, 205,
+	addSequential(new DriveAtHeading(-0.3, 200,
 		NerdyMath.inchesToTicks(
 			0.8 * AutoConstants.kRedStartingWallToSwitchInches + 1.2 * AutoConstants.kRedLeftSwitchToFrontScale),
 		0.004));
 
-	addParallel(new OuttakeRollers(0.3476));
-	addSequential(new WaitTime(0.6));
+	addParallel(new OuttakeRollers(0.6));
+	addSequential(new WaitTime(0.7));
 
 	// stow and turn
 	addParallel(new BackwardsScaleToStow());
@@ -51,15 +51,12 @@ public class LeftToLeftScale2CubeAuto extends CommandGroup {
 	addSequential(new ResetDriveEncoders());
 
     // get second cube
-    addSequential(new ClawOpen());
     addParallel(new DefaultIntake());
     addSequential(new WaitTime(0.3));
 	addSequential(
 		new DriveStraightDistance(0.862 * NerdyMath.inchesToTicks(AutoConstants.kRobotToSecondCubeScale), -15, 2, 0.5));
-    addSequential(new ClawClose());
     addSequential(new WaitTime(0.2));
     addSequential(new ResetDriveEncoders());
-    addSequential(new IntakeSequenceCurrent());
 	addSequential(new DriveStraightDistance(0.7 * 0.862 * -NerdyMath.inchesToTicks(AutoConstants.kRobotToSecondCubeScale),
 		-195, 2, 0.5));
 
@@ -73,8 +70,8 @@ public class LeftToLeftScale2CubeAuto extends CommandGroup {
 	addParallel(new StowToBackwardsScale());
 	addSequential(new WaitTime(2));
 	// addSequential(new DriveTime(-0.5, 0.3));
-	addParallel(new OuttakeRollers(0.5));
-	addSequential(new WaitTime(0.8));
+	addParallel(new OuttakeRollers(0.6));
+	addSequential(new WaitTime(1));
 	// addSequential(new DriveTime(0.5, 0.3));
 	addParallel(new BackwardsScaleToStow());
     }

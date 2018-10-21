@@ -56,7 +56,7 @@ public class AutoConstants {
     public static double kXHalfOffset = kXOffset / 2;
     public static double kYHalfOffset = kYOffset / 2;
     public static double kRedSwitchRightX = NerdyMath
-	    .inchesToTicks((kRedCenterToRightSwitchFence + kRedCenterToRightSwitchInner) / 2); // duncan is a walrus
+	    .inchesToTicks(((kRedCenterToRightSwitchFence + kRedCenterToRightSwitchInner) / 2)); // duncan is a walrus
     public static double kRedSwitchLeftX = NerdyMath
 	    .inchesToTicks((-kRedCenterToRightSwitchFence - kRedCenterToRightSwitchInner) / 2);
     public static double kRedSwitchFrontY = NerdyMath

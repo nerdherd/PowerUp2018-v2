@@ -33,9 +33,9 @@ public class DefaultStow extends Command {
         } else {
             Robot.intake.setRollerPower(-0.1254); // hold cube in place as we go up
             Robot.arm.setPosition(SuperstructureConstants.kArmOffsetPos);
-            // Robot.wrist.setAngleAbsolute(90);
+            Robot.wrist.setAngleAbsolute(90);
             
-            Robot.wrist.setPosition(SuperstructureConstants.kWristStowPos);
+            // Robot.wrist.setPosition(SuperstructureConstants.kWristStowPos);
             Robot.intake.closeClaw();
         }
         if (Math.abs(Robot.arm.getPosition() - SuperstructureConstants.kArmOffsetPos) < 

@@ -25,7 +25,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Intake extends Subsystem {
 
-    private final TalonSRX m_rollers1, m_rollers2;
+    private final TalonSRX m_rollers1;
     private final DoubleSolenoid m_claw;
 
     private String m_filePath1 = "/media/sda1/logs/";
@@ -43,25 +43,13 @@ public class Intake extends Subsystem {
         m_rollers1.setNeutralMode(NeutralMode.Coast);
         m_rollers1.setStatusFramePeriod(StatusFrame.Status_1_General, 20, 0);
     
-        m_rollers1.setInverted(false);
+        m_rollers1.setInverted(true);
         m_rollers1.configPeakCurrentLimit(SuperstructureConstants.kRollerPeakCurrent, 0);
-	    m_rollers1.configContinuousCurrentLimit(SuperstructureConstants.kRollerMaxCurrent, 0);
+        m_rollers1.configContinuousCurrentLimit(SuperstructureConstants.kRollerMaxCurrent, 0);
      
         m_rollers1.configPeakOutputForward(1, 0);
         m_rollers1.configPeakOutputReverse(-1, 0);
         m_rollers1.enableCurrentLimit(false);
-
-        m_rollers2 = new TalonSRX(RobotMap.kIntakeRollers2ID);
-        m_rollers2.setNeutralMode(NeutralMode.Coast);
-        m_rollers2.setStatusFramePeriod(StatusFrame.Status_1_General, 20, 0);
-    
-        m_rollers2.setInverted(true);
-        m_rollers2.configPeakCurrentLimit(SuperstructureConstants.kRollerPeakCurrent, 0);
-	    m_rollers2.configContinuousCurrentLimit(SuperstructureConstants.kRollerMaxCurrent, 0);
-    
-        m_rollers2.configPeakOutputForward(1, 0);
-        m_rollers2.configPeakOutputReverse(-1, 0);
-        m_rollers2.enableCurrentLimit(false);
 
 	m_claw = new DoubleSolenoid(RobotMap.kIntakeClawID2, RobotMap.kIntakeClawID1);
     }
@@ -93,7 +81,6 @@ public class Intake extends Subsystem {
 
     public void setRollerPower(double power) {
         m_rollers1.set(ControlMode.PercentOutput, power);
-        m_rollers2.set(ControlMode.PercentOutput, power);
     }
 
     public double getRoller1Voltage() {
@@ -102,14 +89,6 @@ public class Intake extends Subsystem {
 
     public double getRoller1Current() {
 	return m_rollers1.getOutputCurrent();
-    }
-
-    public double getRoller2Voltage() {
-        return m_rollers2.getMotorOutputVoltage();
-    }
-    
-    public double getRoller2Current() {
-        return m_rollers2.getOutputCurrent();
     }
 
     public void reportToSmartDashboard() {
@@ -154,7 +133,7 @@ public class Intake extends Subsystem {
             }
             try {
             m_writer = new FileWriter(m_file);
-            m_writer.append("Time,Roller 1 Voltage,Roller 1 Current,Roller 2 Voltage,Roller 2 Current\n");
+            m_writer.append("Time,Roller 1 Voltage,Roller 1 Current,Current Intake Command\n");
             m_writer.flush();
             m_logStartTime = Timer.getFPGATimestamp();
             } catch (IOException e) {
@@ -180,7 +159,6 @@ public class Intake extends Subsystem {
             double timestamp = Timer.getFPGATimestamp() - m_logStartTime;
             m_writer.append(String.valueOf(timestamp) + ","
                 + String.valueOf(getRoller1Voltage()) + "," + String.valueOf(getRoller1Current()) + ","
-                + String.valueOf(getRoller2Voltage()) + "," + String.valueOf(getRoller2Current()) + ","
                 + String.valueOf(SmartDashboard.getString("Current Intake Command", "None")) + "\n");
     //		m_writer.flush();
             } catch (IOException e) {

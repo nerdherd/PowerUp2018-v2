@@ -26,8 +26,8 @@ public class LeftToLeftCompatibleScaleAuto extends CommandGroup {
 	// addSequential(new DriveStraightDistance(NerdyMath.inchesToTicks(0 * -AutoConstants.kRedLeftSideWallToScale),
 	// 	-90, 4, 0.4));
 	addSequential(new TurnToAngle(70, 2, 2));
-	addParallel(new OuttakeRollers(0.5));
-	addSequential(new WaitTime(0.3));
+	addParallel(new OuttakeRollers(0.6));
+	addSequential(new WaitTime(0.6));
 	addParallel(new BackwardsScaleToStow());
 	addSequential(new ResetDriveEncoders());
 	addSequential(new DriveStraightDistance(NerdyMath.inchesToTicks(0.254 * AutoConstants.kRedLeftSideWallToScale),

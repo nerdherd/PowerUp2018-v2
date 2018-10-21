@@ -31,7 +31,8 @@ public class ArcadeDrive extends Command {
 	// Robot.drive.addRightSensitivity(Robot.oi.getDriveJoyRightY());
 
 	double straightPower = NerdyMath.squareInput(Robot.oi.getDriveJoyLeftY());
-	double rotPower = NerdyMath.squareInput(Robot.oi.getDriveJoyRightX());
+    double rotPower = NerdyMath.squareInput(NerdyMath.squareInput(Robot.oi.getDriveJoyRightX()));
+    // double rotPower = Math.pow(Robot.oi.getDriveJoyRightX(), 3);
 	Robot.drive.setPower(straightPower + rotPower, straightPower - rotPower);
     }
 

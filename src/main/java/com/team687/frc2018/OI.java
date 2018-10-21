@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import com.team687.frc2018.commands.arm.ResetArmEncoder;
 import com.team687.frc2018.commands.auto.CenterToLeftSwitchAuto;
 import com.team687.frc2018.commands.auto.CenterToRightSwitchAuto;
 import com.team687.frc2018.commands.auto.LeftToLeftCompatibleScaleAuto;
@@ -17,13 +18,18 @@ import com.team687.frc2018.commands.auto.RightToRightScale2CubeAuto;
 import com.team687.frc2018.commands.auto.RightToRightScale3CubeAuto;
 import com.team687.frc2018.commands.intake.ClawClose;
 import com.team687.frc2018.commands.intake.ClawOpen;
+import com.team687.frc2018.commands.intake.OuttakeRollers;
 import com.team687.frc2018.commands.intake.SetIntakeRollerPower;
 import com.team687.frc2018.commands.superstructure.AdjustForwardsScale;
+import com.team687.frc2018.commands.superstructure.BackwardsScaleToStow;
 import com.team687.frc2018.commands.superstructure.DefaultIntake;
 import com.team687.frc2018.commands.superstructure.DefaultStow;
 import com.team687.frc2018.commands.superstructure.IntakeSequenceCurrent;
+import com.team687.frc2018.commands.superstructure.RezeroingSequence;
+import com.team687.frc2018.commands.superstructure.StowToBackwardsScale;
 import com.team687.frc2018.commands.superstructure.StowToForwardsScale;
 import com.team687.frc2018.commands.superstructure.SwitchScorePositionTeleop;
+import com.team687.frc2018.commands.wrist.ResetWristEncoder;
 import com.team687.frc2018.constants.SuperstructureConstants;
 import com.team687.frc2018.utilities.NerdyMath;
 
@@ -68,7 +74,8 @@ public class OI {
     public JoystickButton openClaw_6;
     public JoystickButton closeClaw_5;
     
-    public JoystickButton flipCube_12;
+    // public JoystickButton flipCube_12;
+    public JoystickButton backupStow_12;
     
     // public JoystickButton sketchyStowToBackwards_12;
 
@@ -77,7 +84,7 @@ public class OI {
 	intake_1.whenPressed(new DefaultIntake());
 	
 	outtake_2 = new JoystickButton(driveJoyArtic, 2);
-	outtake_2.whenPressed(new SetIntakeRollerPower(0.35));
+	outtake_2.whenPressed(new SetIntakeRollerPower(0.5));
 	stopIntake_3 = new JoystickButton(driveJoyArtic, 3);
 	stopIntake_3.whenPressed(new SetIntakeRollerPower(0));
 	openCloseClaw_4 = new JoystickButton(driveJoyArtic, 4);
@@ -105,15 +112,22 @@ public class OI {
 	openClaw_6.whenPressed(new ClawOpen());
 	closeClaw_5 = new JoystickButton(driveJoyArtic, 6);
 	closeClaw_5.whenPressed(new ClawClose());
-    flipCube_12 = new JoystickButton(driveJoyArtic, 12);
+    // flipCube_12 = new JoystickButton(driveJoyArtic, 12);
     // flipCube_12.whenPressed(new FlipCube());
+    backupStow_12 = new JoystickButton(driveJoyArtic, 12);
+    backupStow_12.whenPressed(new DefaultStow());
 
 	// sketchyStowToBackwards_12 = new JoystickButton(driveJoyArtic, 12);
 	// sketchyStowToBackwards_12.whenPressed(new StowToBackwardsScale());
 	
 //	sketchyStowToBackwards_12.whenPressed(new StackCubes(55));
 	
-	
+    SmartDashboard.putData(new OuttakeRollers(0.5));
+
+    // SmartDashboard.putData(new RezeroingSequence());
+    // SmartDashboard.putData(new ResetArmEncoder());
+    // SmartDashboard.putData(new ResetWristEncoder());
+
 	// SmartDashboard.putData("****EMERGENCY WRIST SAVE****", new EmergencyWristSave());
 	// SmartDashboard.putData("Stack Cube 0 deg", new StackCubes(0));
 	// SmartDashboard.putData("Stack Cube 45 deg", new StackCubes(45));
@@ -171,11 +185,11 @@ public class OI {
 	// SmartDashboard.putData("Open Intake Claw", new ClawOpen());
 	// SmartDashboard.putData("Close Intake Claw", new ClawClose());
 
-	// SmartDashboard.putData("Superstructure Stow to Backwards Scale", new
-	// StowToBackwardsScale());
+	SmartDashboard.putData("Superstructure Stow to Backwards Scale", new
+	StowToBackwardsScale());
 	// SmartDashboard.putData("Superstructure Stow to Forwards Scale", new
 	// StowToForwardsScale());
-	// SmartDashboard.putData("Superstructure Backwards Scale To Stow", new BackwardsScaleToStow());
+	SmartDashboard.putData("Superstructure Backwards Scale To Stow", new BackwardsScaleToStow());
 	// SmartDashboard.putData("Superstructure Forwards Scale to Stow", new
 	// ForwardsScaleToStow());
 	//
