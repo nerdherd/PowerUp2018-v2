@@ -14,7 +14,7 @@ public class ClawOpen extends Command {
     @Override
     protected void initialize() {
 	SmartDashboard.putString("Current Command", "ClawOpen");
-	Robot.intake.openClaw();
+	// Robot.intake.openClaw();
     }
 
     @Override

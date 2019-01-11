@@ -24,19 +24,19 @@ public class DefaultStow extends Command {
     @Override
     protected void execute() {
         if (Robot.arm.getState() == SuperstructureConstants.kBackwardsScaleState) {
-            Robot.intake.setRollerPower(0);
+            //Robot.intake.setRollerPower(0);
             Robot.wrist.setPosition(SuperstructureConstants.kWristStowArmOffsetPos);
             // in comp-bot branch, - 200 is + 200
             if (Robot.wrist.getPosition() > SuperstructureConstants.kWristStowArmOffsetPos - 200) {
                 Robot.arm.setPosition(SuperstructureConstants.kArmOffsetPos);
             }
         } else {
-            Robot.intake.setRollerPower(-0.1254); // hold cube in place as we go up
+            //Robot.intake.setRollerPower(-0.1254); // hold cube in place as we go up
             Robot.arm.setPosition(SuperstructureConstants.kArmOffsetPos);
             Robot.wrist.setAngleAbsolute(90);
             
             // Robot.wrist.setPosition(SuperstructureConstants.kWristStowPos);
-            Robot.intake.closeClaw();
+            // Robot.intake.closeClaw();
         }
         if (Math.abs(Robot.arm.getPosition() - SuperstructureConstants.kArmOffsetPos) < 
             SuperstructureConstants.kAcceptableErrorForStates) {

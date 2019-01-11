@@ -23,8 +23,8 @@ public class IntakePosition extends Command {
     protected void execute() {
 	Robot.wrist.setAngleAbsolute(-5);
 	Robot.arm.setPosition(SuperstructureConstants.kArmOffsetPos);
-	Robot.intake.setRollerPower(0);
-	Robot.intake.closeClaw();
+	//Robot.intake.setRollerPower(0);
+	// Robot.intake.closeClaw();
     }
 
     @Override

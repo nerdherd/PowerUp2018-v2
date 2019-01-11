@@ -20,7 +20,7 @@ public class SwitchScorePositionAuto extends Command {
     }
 
     protected void execute() {
-	Robot.intake.setRollerPower(-0.1);
+	//Robot.intake.setRollerPower(-0.1);
 	Robot.wrist.setAngleAbsolute(80);
 	Robot.arm.setPosition(SuperstructureConstants.kArmOffsetPos);
     }

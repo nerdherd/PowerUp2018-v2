@@ -14,7 +14,7 @@ public class ClawClose extends Command {
     @Override
     protected void initialize() {
 	SmartDashboard.putString("Current Command", "ClawClose");
-	Robot.intake.closeClaw();
+	// Robot.intake.closeClaw();
     }
 
     @Override

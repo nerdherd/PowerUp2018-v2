@@ -20,7 +20,7 @@ public class SwitchScorePositionTeleop extends Command {
     }
 
     protected void execute() {
-	Robot.intake.setRollerPower(-0.1);
+	//Robot.intake.setRollerPower(-0.1);
 	Robot.wrist.setAngleAbsolute(70);
 	if (Robot.wrist.getAngleAbsolute() > 50) {
 	    Robot.arm.setPosition(SuperstructureConstants.kArmSwitchPos);

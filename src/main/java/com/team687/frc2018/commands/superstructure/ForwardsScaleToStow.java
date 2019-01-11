@@ -26,7 +26,7 @@ public class ForwardsScaleToStow extends Command {
 
     @Override
     protected void execute() {
-	Robot.intake.setRollerPower(0);
+	//Robot.intake.setRollerPower(0);
 
 	if (Robot.wrist.getAngleAbsolute() < 45 && !m_isInitialActionFinished) {
 	    Robot.arm.setPosition(SuperstructureConstants.kArmVerticalPos);
