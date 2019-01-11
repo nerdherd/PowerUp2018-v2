@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import com.nerdherd.lib.motor.commands.SetMotorPower;
+import com.nerdherd.lib.pneumatics.commands.ExtendPiston;
+import com.nerdherd.lib.pneumatics.commands.RetractPiston;
 import com.team687.frc2018.commands.arm.ResetArmEncoder;
 import com.team687.frc2018.commands.wrist.ResetWristEncoder;
 import com.team687.frc2018.constants.SuperstructureConstants;
@@ -58,6 +61,9 @@ public class OI {
     // public JoystickButton sketchyStowToBackwards_12;
 
     public OI() {
+        SmartDashboard.putData("Intake 3 volts", new SetMotorPower(Robot.intake, 0.5));
+        SmartDashboard.putData("Open Claw", new ExtendPiston(Robot.claw));
+        SmartDashboard.putData("Close Claw", new RetractPiston(Robot.claw));
     }
 
     /**

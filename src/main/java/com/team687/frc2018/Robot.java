@@ -1,6 +1,8 @@
 package com.team687.frc2018;
 
 
+import com.nerdherd.lib.motor.SingleMotorTalonSRX;
+import com.nerdherd.lib.pneumatics.Piston;
 import com.team687.frc2018.constants.DriveConstants;
 import com.team687.frc2018.constants.SuperstructureConstants;
 import com.team687.frc2018.subsystems.Arm;
@@ -26,11 +28,15 @@ public class Robot extends TimedRobot {
     public static Drive drive;
     public static Arm arm;
     public static Wrist wrist;
-    public static Intake intake;
+
+	public static Piston claw;
+	public static SingleMotorTalonSRX intake;
 
     public static DriverStation ds;
     public static PowerDistributionPanel pdp;
-    public static Compressor compressor;
+	public static Compressor compressor;
+	
+	
 
     public static OI oi;
 
@@ -43,7 +49,6 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotInit() {
-    CameraServer.getInstance().startAutomaticCapture();
 	pdp = new PowerDistributionPanel();
 	LiveWindow.disableTelemetry(pdp);
 	compressor = new Compressor();
@@ -57,12 +62,16 @@ public class Robot extends TimedRobot {
 	wrist.setPercentOutput(0);
 	wrist.resetEncoder();
 
-	intake = new Intake();
-	intake.setRollerPower(0);
+	// intake = new Intake();
+	// intake.setRollerPower(0);
 
 	drive = new Drive();
 	drive.resetEncoders();
 
+	intake = new SingleMotorTalonSRX(RobotMap.kIntakeRollers1ID, "intake");
+	intake.setInversion(true);
+	
+	claw = new Piston(RobotMap.kIntakeClawID1, RobotMap.kIntakeClawID2);
 	oi = new OI();
 	ds = DriverStation.getInstance();
 
@@ -78,7 +87,6 @@ public class Robot extends TimedRobot {
 	drive.reportToSmartDashboard();
 	arm.reportToSmartDashboard();
 	wrist.reportToSmartDashboard();
-	intake.reportToSmartDashboard();
 
 	SmartDashboard.putBoolean("HEALTHY SUPERSTRUCTURE CURRENT",
 		!(arm.getCurrent() > SuperstructureConstants.kArmSafeCurrent
@@ -88,7 +96,6 @@ public class Robot extends TimedRobot {
 	arm.stopLog();
     wrist.stopLog();
     oi.stopLog();
-    intake.stopLog();
     }
 
     @Override
@@ -97,7 +104,6 @@ public class Robot extends TimedRobot {
 	drive.reportToSmartDashboard();
 	arm.reportToSmartDashboard();
 	wrist.reportToSmartDashboard();
-	intake.reportToSmartDashboard();
 
 	}
 	@Override
@@ -110,7 +116,6 @@ public class Robot extends TimedRobot {
 	 arm.startLog();
      wrist.startLog();
      oi.startLog();
-     intake.startLog();
     }
 
     @Override
@@ -120,7 +125,6 @@ public class Robot extends TimedRobot {
 	drive.reportToSmartDashboard();
 	arm.reportToSmartDashboard();
 	wrist.reportToSmartDashboard();
-	intake.reportToSmartDashboard();
 
 	SmartDashboard.putBoolean("HEALTHY SUPERSTRUCTURE CURRENT",
 		!(arm.getCurrent() > SuperstructureConstants.kArmSafeCurrent
@@ -130,7 +134,6 @@ public class Robot extends TimedRobot {
 	 arm.logToCSV();
      wrist.logToCSV();
      oi.logToCSV();
-     intake.logToCSV();
     }
 
     @Override
@@ -138,7 +141,6 @@ public class Robot extends TimedRobot {
 	drive.reportToSmartDashboard();
 	arm.reportToSmartDashboard();
 	wrist.reportToSmartDashboard();
-	intake.reportToSmartDashboard();
 
 	SmartDashboard.putBoolean("HEALTHY SUPERSTRUCTURE CURRENT",
 		!(arm.getCurrent() > SuperstructureConstants.kArmSafeCurrent
@@ -148,7 +150,6 @@ public class Robot extends TimedRobot {
 	arm.startLog();
     wrist.startLog();
     oi.startLog();
-    intake.startLog();
     }
 
     @Override
@@ -158,7 +159,6 @@ public class Robot extends TimedRobot {
 	drive.reportToSmartDashboard();
 	arm.reportToSmartDashboard();
 	wrist.reportToSmartDashboard();
-	intake.reportToSmartDashboard();
 
 	SmartDashboard.putBoolean("HEALTHY SUPERSTRUCTURE CURRENT",
 		!(arm.getCurrent() > SuperstructureConstants.kArmSafeCurrent
@@ -168,7 +168,6 @@ public class Robot extends TimedRobot {
 	arm.logToCSV();
     wrist.logToCSV();
     oi.logToCSV();
-    intake.logToCSV();
 
 	if (ds.getMatchTime() < 5) {
 	    Robot.wrist.enableBrakeMode();
