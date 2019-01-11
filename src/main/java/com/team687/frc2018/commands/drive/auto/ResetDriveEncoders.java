@@ -1,4 +1,4 @@
-package com.team687.frc2018.commands;
+package com.team687.frc2018.commands.drive.auto;
 
 import com.team687.frc2018.Robot;
 
@@ -6,27 +6,29 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * Command template (copy and paste this to create a new command)
+ * Reset encoders
  */
 
-public class CommandTemplate extends Command {
+public class ResetDriveEncoders extends Command {
 
-    public CommandTemplate() {
+    public ResetDriveEncoders() {
 	requires(Robot.drive);
     }
 
     @Override
     protected void initialize() {
-	SmartDashboard.putString("Current Command", "CommandTemplate");
+	SmartDashboard.putString("Current Drive Command", "ResetDriveEncoders");
+	Robot.drive.resetEncoders();
     }
 
     @Override
     protected void execute() {
+	Robot.drive.resetEncoders();
     }
 
     @Override
     protected boolean isFinished() {
-	return false;
+	return Robot.drive.getAverageEncoderPosition() == 0;
     }
 
     @Override
@@ -35,7 +37,6 @@ public class CommandTemplate extends Command {
 
     @Override
     protected void interrupted() {
-	end();
     }
 
 }

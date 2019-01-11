@@ -1,4 +1,4 @@
-package com.team687.frc2018.commands;
+package com.team687.frc2018.commands.drive.auto;
 
 import com.team687.frc2018.Robot;
 
@@ -6,18 +6,20 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * Command template (copy and paste this to create a new command)
+ * Reset gyro with a command so we do not have to enable/disable every time
  */
 
-public class CommandTemplate extends Command {
+public class ResetGyro extends Command {
 
-    public CommandTemplate() {
+    public ResetGyro() {
 	requires(Robot.drive);
     }
 
     @Override
     protected void initialize() {
-	SmartDashboard.putString("Current Command", "CommandTemplate");
+	SmartDashboard.putString("Current Drive Command", "ResetGyro");
+    Robot.drive.resetYaw();
+    Robot.drive.resetXY();
     }
 
     @Override
@@ -35,7 +37,6 @@ public class CommandTemplate extends Command {
 
     @Override
     protected void interrupted() {
-	end();
     }
 
 }
