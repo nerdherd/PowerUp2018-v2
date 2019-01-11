@@ -28,7 +28,7 @@ public class SetIntakePowerFromDashboard extends Command {
 
     @Override
     protected void execute() {
-        Robot.intake.setRollerPower(m_voltageToSet / 12.0);
+        // //Robot.intake.setRollerPower(m_voltageToSet / 12.0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -40,7 +40,7 @@ public class SetIntakePowerFromDashboard extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        Robot.intake.setRollerPower(0);
+        // //Robot.intake.setRollerPower(0);
     }
 
     // Called when another command which requires one or more of the same

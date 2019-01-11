@@ -24,7 +24,7 @@ public class AdjustForwardsScale extends Command {
     }
 
     protected void execute() {
-	Robot.intake.setRollerPower(-0.08);
+	// //Robot.intake.setRollerPower(-0.08);
 	Robot.arm.setPosition(m_armPosition);
 	Robot.wrist.setAngleAbsolute(10);
 

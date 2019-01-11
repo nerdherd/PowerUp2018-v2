@@ -33,7 +33,7 @@ public class Drive extends Subsystem {
     
     private String m_filePath1 = "/media/sda1/logs/";
 	private String m_filePath2 = "/home/lvuser/logs/";
-	private String m_fileName = Robot.kDate + "pathfinder_test_drive";
+	private String m_fileName = Robot.kDate + "drive_characterization";
     private File m_file;
     public FileWriter m_writer;
     private boolean writeException = false;
@@ -46,10 +46,10 @@ public class Drive extends Subsystem {
 		m_nav = new AHRS(SPI.Port.kMXP);
 		
 		m_leftMaster = new NerdyTalon(RobotMap.kLeftMasterTalonID);
-		m_leftSlave1 = new VictorSPX(RobotMap.kLeftSlaveTalon1ID);
+		m_leftSlave1 = new VictorSPX(RobotMap.kLeftSlaveVictorID);
 		
 		m_rightMaster = new NerdyTalon(RobotMap.kRightMasterTalonID);
-		m_rightSlave1 = new VictorSPX(RobotMap.kRightSlaveTalon1ID);
+		m_rightSlave1 = new VictorSPX(RobotMap.kRightSlaveVictorID);
 		
 		
 		m_leftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
@@ -111,14 +111,16 @@ public class Drive extends Subsystem {
 		m_rightDesiredVel = rightVel;
 	}
 
-	public void setPositionMotionMagic(double leftPosition, double rightPosition) {
-		m_leftMaster.set(ControlMode.MotionMagic, leftPosition);
-		m_rightMaster.set(ControlMode.MotionMagic, rightPosition);
+	public void setPositionMotionMagic(double leftPosition, double rightPosition, int acceleration, int cruiseVelocity) {
+		m_leftMaster.configMotionMagic(acceleration, cruiseVelocity);
+		m_rightMaster.configMotionMagic(acceleration, cruiseVelocity);
+		m_leftMaster.set(ControlMode.MotionMagic, leftPosition, DemandType.ArbitraryFeedForward, DriveConstants.kLeftStatic);
+		m_rightMaster.set(ControlMode.MotionMagic, rightPosition, DemandType.ArbitraryFeedForward, DriveConstants.kRightStatic);
 	}
 	
 	public void setVelocity(double leftVel, double rightVel) {
-		m_rightMaster.set(ControlMode.Velocity, rightVel, DemandType.ArbitraryFeedForward, DriveConstants.kRightStatic);
-		m_leftMaster.set(ControlMode.Velocity, leftVel, DemandType.ArbitraryFeedForward, DriveConstants.kLeftStatic);
+		m_rightMaster.set(ControlMode.Velocity, rightVel, DemandType.ArbitraryFeedForward, DriveConstants.kRightStatic * Math.signum(rightVel));
+		m_leftMaster.set(ControlMode.Velocity, leftVel, DemandType.ArbitraryFeedForward, DriveConstants.kLeftStatic * Math.signum(leftVel));
 		
 	}
 	
@@ -283,7 +285,8 @@ public class Drive extends Subsystem {
 		SmartDashboard.putNumber("Right Velocity", getRightMasterSpeed());
 		SmartDashboard.putNumber("Yaw", getRawYaw());
     	SmartDashboard.putNumber("X pos", m_currentX);
-    	SmartDashboard.putNumber("Y pos", m_currentY);
+		SmartDashboard.putNumber("Y pos", m_currentY);
+		calcXY();
     	
     }
     

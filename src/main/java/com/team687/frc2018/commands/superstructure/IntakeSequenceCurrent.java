@@ -23,7 +23,7 @@ public class IntakeSequenceCurrent extends Command {
 	SmartDashboard.putString("Current Command", "IntakePosition");
 	// m_isFirstPartDone = false;
     m_timerStart = Timer.getFPGATimestamp();
-    Robot.intake.openClaw();
+    // Robot.intake.openClaw();
     }
 
     @Override
@@ -32,11 +32,11 @@ public class IntakeSequenceCurrent extends Command {
 	//     Robot.wrist.setPosition(SuperstructureConstants.kWristIntakePos);
 	//     Robot.arm.setPosition(SuperstructureConstants.kArmOffsetPos);
 	//     if (Robot.wrist.getPosition() < SuperstructureConstants.kWristIntakePos + 500) {
-	// 	Robot.intake.setRollerPower(0.66);
+	// 	//Robot.intake.setRollerPower(0.66);
 	// 	Timer.delay(.330);
 	//     }
 	// } else if (m_isFirstPartDone) {
-	//     Robot.intake.setRollerPower(0.1);
+	//     //Robot.intake.setRollerPower(0.1);
 	//     Robot.wrist.setPosition(SuperstructureConstants.kWristStowArmOffsetPos);
 	// }
 	// if (Robot.intake.hasCube()) {
@@ -44,7 +44,7 @@ public class IntakeSequenceCurrent extends Command {
 	//     m_isFirstPartDone = true;
     // }
     if (Timer.getFPGATimestamp() > (m_timerStart + 0.5)) {
-        Robot.intake.closeClaw();
+        // Robot.intake.closeClaw();
     }
     }
 
