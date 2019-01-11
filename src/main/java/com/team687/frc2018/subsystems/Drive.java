@@ -119,9 +119,14 @@ public class Drive extends Subsystem {
 	}
 	
 	public void setVelocity(double leftVel, double rightVel) {
+		if (Math.abs(leftVel) > DriveConstants.kLeftCruiseVelocity) {
+			leftVel = DriveConstants.kLeftCruiseVelocity * Math.signum(leftVel);
+		}
+		if (Math.abs(rightVel) > DriveConstants.kRightCruiseVelocity) {
+			rightVel = DriveConstants.kRightCruiseVelocity * Math.signum(rightVel);
+		}
 		m_rightMaster.set(ControlMode.Velocity, rightVel, DemandType.ArbitraryFeedForward, DriveConstants.kRightStatic * Math.signum(rightVel));
 		m_leftMaster.set(ControlMode.Velocity, leftVel, DemandType.ArbitraryFeedForward, DriveConstants.kLeftStatic * Math.signum(leftVel));
-		
 	}
 	
 	public void resetEncoders() {
@@ -163,10 +168,10 @@ public class Drive extends Subsystem {
 	
 	
 	public double getRawYaw() {
-        return -m_nav.getAngle();
+        return -m_nav.getAngle() + Robot.chooser.getDirection();
 	}
 	
-	public void resetYaw() {
+	public void resetYaw() { 
 		m_nav.reset();
 	}
 	

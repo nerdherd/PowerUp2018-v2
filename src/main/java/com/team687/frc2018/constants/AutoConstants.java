@@ -11,7 +11,7 @@ public class AutoConstants {
     public static final double kCruiseVelocity = 13;
     public static final double kjerk = 100;
 
-    private static Config testConfig = new Config(Trajectory.FitMethod.HERMITE_CUBIC, Config.SAMPLES_HIGH, dt, kCruiseVelocity/3, kAcceleration/3, kjerk);
+    private static Config testConfig = new Config(Trajectory.FitMethod.HERMITE_CUBIC, Config.SAMPLES_HIGH, dt, kCruiseVelocity/6, kAcceleration/6, kjerk);
     private static Waypoint[]testPoints = new Waypoint[] {
         new Waypoint(0, 0, 0),
         new Waypoint(5, 5, 0)

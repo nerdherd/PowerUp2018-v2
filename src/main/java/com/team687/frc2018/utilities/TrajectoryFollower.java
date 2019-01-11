@@ -32,14 +32,14 @@ public class TrajectoryFollower {
         m_trajectoryList = Arrays.asList(m_trajectory.segments);
         m_lookaheadIndex = 0;
         m_lastError = 0;
-
     }
 
     public void calculate(double robotX, double robotY, double robotTheta, double dT) {
         m_robotX = robotX;
         m_robotY = robotY;
+        robotTheta = Pathfinder.boundHalfDegrees(robotTheta);
         // Get point closest to the robot, based off the last point to the robot was closest to
-        m_robotSegment = getClosestSegment(m_robotX, m_robotY, m_trajectory, m_robotIndex, 5);
+        m_robotSegment = getClosestSegment(m_robotX, m_robotY, m_trajectory, m_robotIndex, 3);
         m_robotIndex = m_trajectoryList.indexOf(m_robotSegment);
         m_lookaheadIndex = m_robotIndex + m_lookahead;
         if (m_lookaheadIndex > m_trajectory.length() - 1) {

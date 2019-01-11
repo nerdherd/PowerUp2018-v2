@@ -1,6 +1,7 @@
 package com.team687.frc2018;
 
 
+import com.nerdherd.lib.misc.AutoChooser;
 import com.nerdherd.lib.motor.SingleMotorTalonSRX;
 import com.nerdherd.lib.pneumatics.Piston;
 import com.team687.frc2018.constants.DriveConstants;
@@ -36,7 +37,7 @@ public class Robot extends TimedRobot {
     public static PowerDistributionPanel pdp;
 	public static Compressor compressor;
 	
-	
+	public static AutoChooser chooser;
 
     public static OI oi;
 
@@ -73,6 +74,9 @@ public class Robot extends TimedRobot {
 	
 	claw = new Piston(RobotMap.kIntakeClawID1, RobotMap.kIntakeClawID2);
 	oi = new OI();
+
+	chooser = new AutoChooser();
+	
 	ds = DriverStation.getInstance();
 
 	// CameraServer.getInstance().startAutomaticCapture();

@@ -11,6 +11,7 @@ import com.team687.frc2018.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import jaci.pathfinder.Trajectory;
 import com.team687.frc2018.utilities.TrajectoryFollower;
 
@@ -38,6 +39,8 @@ public class DriveTrajectory extends Command {
     m_time = Timer.getFPGATimestamp() - m_startTime;
     m_controller.calculate(Robot.drive.getXpos(), Robot.drive.getYpos(), Robot.drive.getRawYaw(), m_time - m_lastTime);
     Robot.drive.setVelocityFPS(m_controller.getLeftVelocity(), m_controller.getRightVelocity());
+    SmartDashboard.putNumber("left desired vel", m_controller.getLeftVelocity());
+    SmartDashboard.putNumber("right desired vel", m_controller.getRightVelocity());
     m_lastTime = m_time;
   }
 
