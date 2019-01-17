@@ -28,7 +28,7 @@ public class DefaultIntake extends Command {
 	    // Robot.wrist.setPosition(SuperstructureConstants.kWristIntakePos);
 		Robot.wrist.setAngleAbsolute(2);
 	}
-	//Robot.intake.setRollerPower(-1);
+	Robot.intake.setPower(0.5);
 	// Robot.intake.closeClaw();
     }
 

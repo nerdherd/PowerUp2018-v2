@@ -70,7 +70,7 @@ public class Robot extends TimedRobot {
 	drive.resetEncoders();
 
 	intake = new SingleMotorTalonSRX(RobotMap.kIntakeRollers1ID, "intake");
-	intake.setInversion(true);
+	intake.setInversion(false);
 	
 	claw = new Piston(RobotMap.kIntakeClawID1, RobotMap.kIntakeClawID2);
 	oi = new OI();
