@@ -7,21 +7,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import com.nerdherd.lib.motor.commands.SetMotorPower;
-import com.nerdherd.lib.pneumatics.commands.ExtendPiston;
-import com.nerdherd.lib.pneumatics.commands.RetractPiston;
-import com.team687.frc2018.commands.arm.ResetArmEncoder;
+import com.team687.frc2018.commands.drive.auto.DriveDistanceMotionMagic;
 import com.team687.frc2018.commands.drive.auto.ResetDriveEncoders;
-import com.team687.frc2018.commands.drive.auto.ResetGyro;
+import com.team687.frc2018.commands.drive.characterization.DriveCharacterizationTest;
 import com.team687.frc2018.commands.intake.ClawClose;
 import com.team687.frc2018.commands.intake.ClawOpen;
-import com.team687.frc2018.commands.intake.SetIntakeRollerPower;
 import com.team687.frc2018.commands.superstructure.AdjustForwardsScale;
 import com.team687.frc2018.commands.superstructure.DefaultIntake;
 import com.team687.frc2018.commands.superstructure.DefaultStow;
 import com.team687.frc2018.commands.superstructure.IntakeSequenceCurrent;
 import com.team687.frc2018.commands.superstructure.StowToForwardsScale;
 import com.team687.frc2018.commands.superstructure.SwitchScorePositionTeleop;
-import com.team687.frc2018.commands.wrist.ResetWristEncoder;
 import com.team687.frc2018.constants.SuperstructureConstants;
 import com.team687.frc2018.utilities.NerdyMath;
 
@@ -73,22 +69,22 @@ public class OI {
 
     public OI() {
         // SmartDashboard.putData("Intake 3 volts", new SetMotorPower(Robot.intake, 0.5));
-        SmartDashboard.putData("Open Claw", new ExtendPiston(Robot.claw));
-        SmartDashboard.putData("Close Claw", new RetractPiston(Robot.claw));
-        SmartDashboard.putData("Reset Arm Encoder", new ResetArmEncoder());
-        SmartDashboard.putData("Reset Wrist Encoder", new ResetWristEncoder());
-        SmartDashboard.putData("Stow", new DefaultStow());
+        // SmartDashboard.putData("Open Claw", new ExtendPiston(Robot.claw));
+        // SmartDashboard.putData("Close Claw", new RetractPiston(Robot.claw));
+        // SmartDashboard.putData("Reset Arm Encoder", new ResetArmEncoder());
+        // SmartDashboard.putData("Reset Wrist Encoder", new ResetWristEncoder());
+        // SmartDashboard.putData("Stow", new DefaultStow());
         SmartDashboard.putData("Reset Drive Encoders", new ResetDriveEncoders());
-        SmartDashboard.putData("Reset Gyro", new ResetGyro());
-        SmartDashboard.putData("Intake 3V ", new SetMotorPower(Robot.intake, .25));
-        SmartDashboard.putData("Intake 6V ", new SetMotorPower(Robot.intake, .5));
-        SmartDashboard.putData("Intake 9V ", new SetMotorPower(Robot.intake, 0.75));
-        SmartDashboard.putData("Intake 12V ", new SetMotorPower(Robot.intake, 1));
-        SmartDashboard.putData("Intake -3V ", new SetMotorPower(Robot.intake, -0.25));
+        // SmartDashboard.putData("Reset Gyro", new ResetGyro());
+        // SmartDashboard.putData("Intake 3V ", new SetMotorPower(Robot.intake, .25));
+        // SmartDashboard.putData("Intake 6V ", new SetMotorPower(Robot.intake, .5));
+        // SmartDashboard.putData("Intake 9V ", new SetMotorPower(Robot.intake, 0.75));
+        // SmartDashboard.putData("Intake 12V ", new SetMotorPower(Robot.intake, 1));
+        // SmartDashboard.putData("Intake -3V ", new SetMotorPower(Robot.intake, -0.25));
 
-        // SmartDashboard.putData("Drive Characterization", new DriveCharacterizationTest(0.25));
+        SmartDashboard.putData("Drive Characterization", new DriveCharacterizationTest(0.25));
         // SmartDashboard.putData("6 V open loop", new OpenLoopDrive(0.5));
-        // SmartDashboard.putData("Drive Motion Magic", new DriveDistanceMotionMagic(25000, DriveConstants.kRightAcceleration * 0.3, DriveConstants.kRightCruiseVelocity * 0.3));
+        SmartDashboard.putData("Drive Motion Magic", new DriveDistanceMotionMagic(15000, 500, 500));
         // SmartDashboard.putData("Drive Trajectory", new DriveTrajectory(AutoConstants.testTraj, 3, true, 0.3, 0));
         // SmartDashboard.putData("Backwards Trajectory", new DriveTrajectory(AutoConstants.BackwardsTraj, 3, false, 0.3, 0));
 
