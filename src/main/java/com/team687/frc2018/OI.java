@@ -66,6 +66,11 @@ public class OI extends DefaultOI {
 
     public OI() {
         super();
+        // SmartDashboard.putData("Intake 3 volts", new SetMotorPower(Robot.intake, 0.5));
+        // SmartDashboard.putData("Open Claw", new ExtendPiston(Robot.claw));
+        // SmartDashboard.putData("Close Claw", new RetractPiston(Robot.claw));
+        // SmartDashboard.putData("Reset Arm Encoder", new ResetArmEncoder());
+        // SmartDashboard.putData("Reset Wrist Encoder", new ResetWristEncoder());
         // SmartDashboard.putData("Stow", new DefaultStow());
         SmartDashboard.putData("Reset Drive Encoders", new ResetDriveEncoders(Robot.drive));
         // SmartDashboard.putData("Reset Gyro", new ResetGyro());
@@ -73,6 +78,9 @@ public class OI extends DefaultOI {
         SmartDashboard.putData("Drive Characterization", new DriveCharacterizationTest(Robot.drive, 0.25));
         // SmartDashboard.putData("6 V open loop", new OpenLoopDrive(0.5));
         SmartDashboard.putData("Drive Motion Magic", new DriveDistanceMotionMagic(Robot.drive, 15000, 500, 500));
+        // SmartDashboard.putData("Drive Trajectory", new DriveTrajectory(AutoConstants.testTraj, 3, true, 0.3, 0));
+        // SmartDashboard.putData("Backwards Trajectory", new DriveTrajectory(AutoConstants.BackwardsTraj, 3, false, 0.3, 0));
+
         
         intake_1 = new JoystickButton(super.operatorJoy, 1);
         intake_1.whenPressed(new DefaultIntake());
