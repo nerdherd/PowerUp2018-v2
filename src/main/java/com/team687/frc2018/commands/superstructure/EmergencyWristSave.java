@@ -18,7 +18,7 @@ public class EmergencyWristSave extends Command {
     }
 
     protected void execute() {
-    	Robot.wrist.setPercentOutput(-Robot.oi.getArticJoyY());
+    	Robot.wrist.setPercentOutput(-Robot.oi.getOperatorJoyY());
     	Robot.wrist.resetEncoder();
     }
 

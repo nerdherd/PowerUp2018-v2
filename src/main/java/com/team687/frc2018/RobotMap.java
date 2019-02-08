@@ -11,11 +11,7 @@ public class RobotMap {
 
     public static final int kRightMasterTalonID = 1;
     public static final int kLeftMasterTalonID = 8;
-
-    // // practice bot
-    // public static final int kRightSlaveTalon1ID = 4;
-    // public static final int kLeftSlaveTalon1ID = 5;
-
+    
     // comp bot
     public static final int kRightSlaveVictorID = 4;
     public static final int kLeftSlaveVictorID = 5;
