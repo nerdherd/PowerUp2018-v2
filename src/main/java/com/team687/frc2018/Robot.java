@@ -2,16 +2,13 @@ package com.team687.frc2018;
 
 
 import com.nerdherd.lib.misc.AutoChooser;
-import com.nerdherd.lib.motor.SingleMotorTalonSRX;
+import com.nerdherd.lib.motor.single.SingleMotorTalonSRX;
 import com.nerdherd.lib.pneumatics.Piston;
-import com.team687.frc2018.constants.DriveConstants;
 import com.team687.frc2018.constants.SuperstructureConstants;
 import com.team687.frc2018.subsystems.Arm;
 import com.team687.frc2018.subsystems.Drive;
-import com.team687.frc2018.subsystems.Intake;
 import com.team687.frc2018.subsystems.Wrist;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
@@ -69,8 +66,7 @@ public class Robot extends TimedRobot {
 	drive = new Drive();
 	drive.resetEncoders();
 
-	intake = new SingleMotorTalonSRX(RobotMap.kIntakeRollers1ID, "intake");
-	intake.setInversion(false);
+	intake = new SingleMotorTalonSRX(RobotMap.kIntakeRollers1ID, "intake", false, true);
 	
 	claw = new Piston(RobotMap.kIntakeClawID1, RobotMap.kIntakeClawID2);
 	oi = new OI();
@@ -99,7 +95,6 @@ public class Robot extends TimedRobot {
 	drive.stopLog();
 	arm.stopLog();
     wrist.stopLog();
-    oi.stopLog();
     }
 
     @Override
@@ -119,7 +114,6 @@ public class Robot extends TimedRobot {
 	 drive.startLog();
 	 arm.startLog();
      wrist.startLog();
-     oi.startLog();
     }
 
     @Override
@@ -137,7 +131,6 @@ public class Robot extends TimedRobot {
 	 drive.logToCSV();
 	 arm.logToCSV();
      wrist.logToCSV();
-     oi.logToCSV();
     }
 
     @Override
@@ -153,7 +146,6 @@ public class Robot extends TimedRobot {
 	drive.startLog();
 	arm.startLog();
     wrist.startLog();
-    oi.startLog();
     }
 
     @Override
@@ -171,7 +163,6 @@ public class Robot extends TimedRobot {
 	drive.logToCSV();
 	arm.logToCSV();
     wrist.logToCSV();
-    oi.logToCSV();
 
 	if (ds.getMatchTime() < 5) {
 	    Robot.wrist.enableBrakeMode();
