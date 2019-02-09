@@ -71,7 +71,6 @@ public class Robot extends TimedRobot {
 	claw = new Piston(RobotMap.kIntakeClawID1, RobotMap.kIntakeClawID2);
 	oi = new OI();
 
-	chooser = new AutoChooser();
 	
 	ds = DriverStation.getInstance();
 
@@ -145,7 +144,7 @@ public class Robot extends TimedRobot {
 	compressor.start();
 	drive.startLog();
 	arm.startLog();
-    wrist.startLog();
+	wrist.startLog();
     }
 
     @Override
@@ -155,7 +154,6 @@ public class Robot extends TimedRobot {
 	drive.reportToSmartDashboard();
 	arm.reportToSmartDashboard();
 	wrist.reportToSmartDashboard();
-
 	SmartDashboard.putBoolean("HEALTHY SUPERSTRUCTURE CURRENT",
 		!(arm.getCurrent() > SuperstructureConstants.kArmSafeCurrent
 			|| wrist.getCurrent() > SuperstructureConstants.kWristSafeCurrent));
@@ -163,10 +161,6 @@ public class Robot extends TimedRobot {
 	drive.logToCSV();
 	arm.logToCSV();
     wrist.logToCSV();
-
-	if (ds.getMatchTime() < 5) {
-	    Robot.wrist.enableBrakeMode();
-	}
     }
 
     @Override

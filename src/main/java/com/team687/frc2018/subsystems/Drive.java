@@ -7,6 +7,8 @@ import com.nerdherd.lib.misc.AutoChooser;
 import com.team687.frc2018.Robot;
 import com.team687.frc2018.RobotMap;
 import com.team687.frc2018.constants.DriveConstants;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
@@ -24,6 +26,7 @@ public class Drive extends Drivetrain {
 		 super.configLeftPIDF(DriveConstants.kLeftP, DriveConstants.kLeftI, DriveConstants.kLeftD, DriveConstants.kLeftF);
 		 super.configRightPIDF(DriveConstants.kRightP, DriveConstants.kRightI, DriveConstants.kRightD, DriveConstants.kRightF);
 		 super.configStaticFeedforward(DriveConstants.kLeftStatic, DriveConstants.kRightStatic);
+		 super.configDate("2019_2_8_");
 		}
 
 	@Override

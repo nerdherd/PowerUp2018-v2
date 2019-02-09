@@ -2,15 +2,14 @@ package com.team687.frc2018;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
-import com.nerdherd.lib.drivetrain.auto.DriveDistanceMotionMagic;
 import com.nerdherd.lib.drivetrain.auto.ResetDriveEncoders;
+import com.nerdherd.lib.drivetrain.auto.ResetGyro;
 import com.nerdherd.lib.drivetrain.characterization.DriveCharacterizationTest;
+import com.nerdherd.lib.drivetrain.characterization.OpenLoopDrive;
 import com.nerdherd.lib.motor.commands.SetMotorPower;
 import com.nerdherd.lib.oi.DefaultOI;
+import com.team687.frc2018.commands.TurnAngle;
 import com.team687.frc2018.commands.intake.ClawClose;
 import com.team687.frc2018.commands.intake.ClawOpen;
 import com.team687.frc2018.commands.superstructure.AdjustForwardsScale;
@@ -20,9 +19,7 @@ import com.team687.frc2018.commands.superstructure.IntakeSequenceCurrent;
 import com.team687.frc2018.commands.superstructure.StowToForwardsScale;
 import com.team687.frc2018.commands.superstructure.SwitchScorePositionTeleop;
 import com.team687.frc2018.constants.SuperstructureConstants;
-import com.team687.frc2018.utilities.NerdyMath;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -73,11 +70,11 @@ public class OI extends DefaultOI {
         // SmartDashboard.putData("Reset Wrist Encoder", new ResetWristEncoder());
         // SmartDashboard.putData("Stow", new DefaultStow());
         SmartDashboard.putData("Reset Drive Encoders", new ResetDriveEncoders(Robot.drive));
-        // SmartDashboard.putData("Reset Gyro", new ResetGyro());
-
-        SmartDashboard.putData("Drive Characterization", new DriveCharacterizationTest(Robot.drive, 0.25));
-        // SmartDashboard.putData("6 V open loop", new OpenLoopDrive(0.5));
-        SmartDashboard.putData("Drive Motion Magic", new DriveDistanceMotionMagic(Robot.drive, 15000, 500, 500));
+        SmartDashboard.putData("Reset Gyro", new ResetGyro(Robot.drive));
+        SmartDashboard.putData("Turn 90 deg", new TurnAngle(Robot.drive, 90, 1, 5, 0.006, 0.0007));
+        SmartDashboard.putData("Drive Characterization", new DriveCharacterizationTest(Robot.drive, 0.5));
+        SmartDashboard.putData("2 V open loop", new OpenLoopDrive(Robot.drive, 0.15));
+        // SmartDashboard.putData("Drive Motion Magic", new DriveDistanceMotionMagic(Robot.drive, 15000, 500, 500));
         // SmartDashboard.putData("Drive Trajectory", new DriveTrajectory(AutoConstants.testTraj, 3, true, 0.3, 0));
         // SmartDashboard.putData("Backwards Trajectory", new DriveTrajectory(AutoConstants.BackwardsTraj, 3, false, 0.3, 0));
 
