@@ -1,26 +1,13 @@
 package com.team687.frc2018;
 
-import java.io.File;
-import java.io.FileWriter;
+import static org.junit.Assert.assertArrayEquals;
 
-import com.nerdherd.lib.drivetrain.auto.ResetDriveEncoders;
-import com.nerdherd.lib.drivetrain.auto.ResetGyro;
-import com.nerdherd.lib.drivetrain.characterization.DriveCharacterizationTest;
-import com.nerdherd.lib.drivetrain.characterization.OpenLoopDrive;
-import com.nerdherd.lib.motor.commands.SetMotorPower;
+import com.nerdherd.lib.motor.commands.MotorVoltageRamping;
+import com.nerdherd.lib.motor.commands.ResetSingleMotorEncoder;
+import com.nerdherd.lib.motor.commands.mechanisms.MechanismVoltageRampingWithFF;
+import com.nerdherd.lib.motor.commands.mechanisms.SetArmAngleMotionMagic;
 import com.nerdherd.lib.oi.DefaultOI;
-import com.team687.frc2018.commands.TurnAngle;
-import com.team687.frc2018.commands.intake.ClawClose;
-import com.team687.frc2018.commands.intake.ClawOpen;
-import com.team687.frc2018.commands.superstructure.AdjustForwardsScale;
-import com.team687.frc2018.commands.superstructure.DefaultIntake;
-import com.team687.frc2018.commands.superstructure.DefaultStow;
-import com.team687.frc2018.commands.superstructure.IntakeSequenceCurrent;
-import com.team687.frc2018.commands.superstructure.StowToForwardsScale;
-import com.team687.frc2018.commands.superstructure.SwitchScorePositionTeleop;
-import com.team687.frc2018.constants.SuperstructureConstants;
 
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -30,92 +17,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OI extends DefaultOI {
 
-    private String m_filePath1 = "/media/sda1/logs/";
-    private String m_filePath2 = "/home/lvuser/logs/";
-    private File m_file;
-    public FileWriter m_writer;
-    private boolean writeException = false;
-    private double m_logStartTime;
-
-
-    // public Joystick gamepadJoy = new Joystick(0);
-
-    
-    public JoystickButton intake_1;
-    public JoystickButton outtake_2;
-    public JoystickButton stopIntake_3;
-    public JoystickButton openCloseClaw_4;
-    // public JoystickButton intakePosition_4;
-
-    public JoystickButton switchPosition_11;
-    public JoystickButton intakeRollers_9;
-    public JoystickButton stowToForwards_7;
-    public JoystickButton adjustMiddle_8;
-    public JoystickButton defaultStow_10;
-    
-    public JoystickButton openClaw_6;
-    public JoystickButton closeClaw_5;
-    
-    // public JoystickButton flipCube_12;
-    public JoystickButton backupStow_12;
-    
-    // public JoystickButton sketchyStowToBackwards_12;
-
     public OI() {
         super();
-        // SmartDashboard.putData("Intake 3 volts", new SetMotorPower(Robot.intake, 0.5));
-        // SmartDashboard.putData("Open Claw", new ExtendPiston(Robot.claw));
-        // SmartDashboard.putData("Close Claw", new RetractPiston(Robot.claw));
-        // SmartDashboard.putData("Reset Arm Encoder", new ResetArmEncoder());
-        // SmartDashboard.putData("Reset Wrist Encoder", new ResetWristEncoder());
-        // SmartDashboard.putData("Stow", new DefaultStow());
-        SmartDashboard.putData("Reset Drive Encoders", new ResetDriveEncoders(Robot.drive));
-        SmartDashboard.putData("Reset Gyro", new ResetGyro(Robot.drive));
-        SmartDashboard.putData("Turn 90 deg", new TurnAngle(Robot.drive, 90, 1, 5, 0.006, 0.0007));
-        SmartDashboard.putData("Drive Characterization", new DriveCharacterizationTest(Robot.drive, 0.5));
-        SmartDashboard.putData("2 V open loop", new OpenLoopDrive(Robot.drive, 0.15));
-        // SmartDashboard.putData("Drive Motion Magic", new DriveDistanceMotionMagic(Robot.drive, 15000, 500, 500));
-        // SmartDashboard.putData("Drive Trajectory", new DriveTrajectory(AutoConstants.testTraj, 3, true, 0.3, 0));
-        // SmartDashboard.putData("Backwards Trajectory", new DriveTrajectory(AutoConstants.BackwardsTraj, 3, false, 0.3, 0));
-
-        
-        intake_1 = new JoystickButton(super.operatorJoy, 1);
-        intake_1.whenPressed(new DefaultIntake());
-        
-        outtake_2 = new JoystickButton(super.operatorJoy, 2);
-        outtake_2.whenPressed(new SetMotorPower(Robot.intake, -0.5));
-        stopIntake_3 = new JoystickButton(super.operatorJoy, 3);
-        stopIntake_3.whenPressed(new SetMotorPower(Robot.intake, 0));
-        openCloseClaw_4 = new JoystickButton(super.operatorJoy, 4);
-        openCloseClaw_4.whenPressed(new IntakeSequenceCurrent());
-        // intakePosition_4 = new JoystickButton(super.operatorJoy, 4);
-        // intakePosition_4.whenPressed(new DefaultIntake());
-
-        intakeRollers_9 = new JoystickButton(super.operatorJoy, 9);
-        intakeRollers_9.whenPressed(new SetMotorPower(Robot.intake, .8333333333333333));
-    //	intakeRollers_9.whenPressed(new StackCubes(0));
-        stowToForwards_7 = new JoystickButton(super.operatorJoy, 7);
-        
-        stowToForwards_7.whenPressed(new StowToForwardsScale());
-    //	stowToForwards_7.whenPressed(new StackCubes(-15));
-        
-        adjustMiddle_8 = new JoystickButton(super.operatorJoy, 8);
-        adjustMiddle_8.whenPressed(new AdjustForwardsScale(SuperstructureConstants.kArmMiddleScalePosition));
-        defaultStow_10 = new JoystickButton(super.operatorJoy, 10);
-        defaultStow_10.whenPressed(new DefaultStow());
-        switchPosition_11 = new JoystickButton(super.operatorJoy, 11);
-        switchPosition_11.whenPressed(new SwitchScorePositionTeleop());
-    //	switchPosition_11.whenPressed(new StackCubes(35));
-
-        openClaw_6 = new JoystickButton(super.operatorJoy, 5);
-        openClaw_6.whenPressed(new ClawOpen());
-        closeClaw_5 = new JoystickButton(super.operatorJoy, 6);
-        closeClaw_5.whenPressed(new ClawClose());
-        // flipCube_12 = new JoystickButton(super.operatorJoy, 12);
-        // flipCube_12.whenPressed(new FlipCube());
-        backupStow_12 = new JoystickButton(super.operatorJoy, 12);
-        backupStow_12.whenPressed(new DefaultStow());
-
+        SmartDashboard.putData("Wrist Ramp Up", new MechanismVoltageRampingWithFF(Robot.wrist, 0.25/12.0));
+        SmartDashboard.putData("Wrist Ramp Down", new MechanismVoltageRampingWithFF(Robot.wrist, -0.25/12.0));
+        SmartDashboard.putData("Set Wrist Angle 15", new SetArmAngleMotionMagic(Robot.wrist, 15));
+        SmartDashboard.putData("Reset Wrist Encoder", new ResetSingleMotorEncoder(Robot.wrist));
     }
 
 }

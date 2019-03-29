@@ -1,15 +1,13 @@
 package com.team687.frc2018;
 
 
+import com.nerdherd.lib.logging.NerdyBadlog;
 import com.nerdherd.lib.misc.AutoChooser;
 import com.nerdherd.lib.motor.single.SingleMotorTalonSRX;
+import com.nerdherd.lib.motor.single.mechanisms.SingleMotorArm;
 import com.nerdherd.lib.pneumatics.Piston;
-import com.team687.frc2018.constants.SuperstructureConstants;
-import com.team687.frc2018.subsystems.Arm;
 import com.team687.frc2018.subsystems.Drive;
-import com.team687.frc2018.subsystems.Wrist;
 
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -17,22 +15,20 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 public class Robot extends TimedRobot {
 
-    public static final String kDate = "2019_01_11_";
+	public static final String kDate = "2019_01_11_";
 
     public static Drive drive;
-    public static Arm arm;
-    public static Wrist wrist;
 
 	public static Piston claw;
+	public static SingleMotorArm wrist;
 	public static SingleMotorTalonSRX intake;
 
     public static DriverStation ds;
     public static PowerDistributionPanel pdp;
-	public static Compressor compressor;
 	
 	public static AutoChooser chooser;
 
@@ -49,16 +45,7 @@ public class Robot extends TimedRobot {
     public void robotInit() {
 	pdp = new PowerDistributionPanel();
 	LiveWindow.disableTelemetry(pdp);
-	compressor = new Compressor();
-	compressor.start();
-
-	arm = new Arm();
-	arm.setVoltage(0);
-	arm.resetEncoder();
-
-	wrist = new Wrist();
-	wrist.setPercentOutput(0);
-	wrist.resetEncoder();
+	LiveWindow.disableAllTelemetry();
 
 	// intake = new Intake();
 	// intake.setRollerPower(0);
@@ -67,41 +54,40 @@ public class Robot extends TimedRobot {
 	drive.resetEncoders();
 
 	intake = new SingleMotorTalonSRX(RobotMap.kIntakeRollers1ID, "intake", false, true);
-	
+	wrist = new SingleMotorArm(RobotMap.kWristID, "wrist", true, true);
+	wrist.configAngleConversion((1./4096.) * (12./30.) * 360., 117);
+	wrist.configFFs(2.8, 0);
+	wrist.configMotionMagic(1540, 1540);
+	wrist.configPIDF(0, 0, 0, 0.66435325);
 	claw = new Piston(RobotMap.kIntakeClawID1, RobotMap.kIntakeClawID2);
 	oi = new OI();
 
 	
 	ds = DriverStation.getInstance();
+	NerdyBadlog.initAndLog("/home/lvuser/logs/", "wrist_characterization", 0.02, wrist);
 
 	// CameraServer.getInstance().startAutomaticCapture();
 	}
 
 
+	@Override
+	public void robotPeriodic() {
+		wrist.reportToSmartDashboard();
+	}
 
     @Override
     public void disabledInit() {
 	Scheduler.getInstance().removeAll();
 
 	drive.reportToSmartDashboard();
-	arm.reportToSmartDashboard();
-	wrist.reportToSmartDashboard();
-
-	SmartDashboard.putBoolean("HEALTHY SUPERSTRUCTURE CURRENT",
-		!(arm.getCurrent() > SuperstructureConstants.kArmSafeCurrent
-			|| wrist.getCurrent() > SuperstructureConstants.kWristSafeCurrent));
 
 	drive.stopLog();
-	arm.stopLog();
-    wrist.stopLog();
-    }
+	}
 
     @Override
     public void disabledPeriodic() {
-
-	drive.reportToSmartDashboard();
-	arm.reportToSmartDashboard();
-	wrist.reportToSmartDashboard();
+		
+		drive.reportToSmartDashboard();
 
 	}
 	@Override
@@ -111,8 +97,6 @@ public class Robot extends TimedRobot {
 	
 
 	 drive.startLog();
-	 arm.startLog();
-     wrist.startLog();
     }
 
     @Override
@@ -120,47 +104,22 @@ public class Robot extends TimedRobot {
 	Scheduler.getInstance().run();
 
 	drive.reportToSmartDashboard();
-	arm.reportToSmartDashboard();
-	wrist.reportToSmartDashboard();
-
-	SmartDashboard.putBoolean("HEALTHY SUPERSTRUCTURE CURRENT",
-		!(arm.getCurrent() > SuperstructureConstants.kArmSafeCurrent
-			|| wrist.getCurrent() > SuperstructureConstants.kWristSafeCurrent));
 
 	 drive.logToCSV();
-	 arm.logToCSV();
-     wrist.logToCSV();
-    }
+	}
 
     @Override
     public void teleopInit() {
 	drive.reportToSmartDashboard();
-	arm.reportToSmartDashboard();
-	wrist.reportToSmartDashboard();
 
-	SmartDashboard.putBoolean("HEALTHY SUPERSTRUCTURE CURRENT",
-		!(arm.getCurrent() > SuperstructureConstants.kArmSafeCurrent
-			|| wrist.getCurrent() > SuperstructureConstants.kWristSafeCurrent));
-	compressor.start();
 	drive.startLog();
-	arm.startLog();
-	wrist.startLog();
-    }
+	}
 
     @Override
     public void teleopPeriodic() {
 	Scheduler.getInstance().run();
-	compressor.start();
 	drive.reportToSmartDashboard();
-	arm.reportToSmartDashboard();
-	wrist.reportToSmartDashboard();
-	SmartDashboard.putBoolean("HEALTHY SUPERSTRUCTURE CURRENT",
-		!(arm.getCurrent() > SuperstructureConstants.kArmSafeCurrent
-			|| wrist.getCurrent() > SuperstructureConstants.kWristSafeCurrent));
-
 	drive.logToCSV();
-	arm.logToCSV();
-    wrist.logToCSV();
     }
 
     @Override
