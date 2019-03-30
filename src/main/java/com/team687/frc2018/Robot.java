@@ -26,6 +26,7 @@ public class Robot extends TimedRobot {
 	public static Piston claw;
 	public static SingleMotorArm wrist;
 	public static SingleMotorTalonSRX intake;
+	public static SingleMotorArm arm;
 
     public static DriverStation ds;
     public static PowerDistributionPanel pdp;
@@ -56,10 +57,18 @@ public class Robot extends TimedRobot {
 	intake = new SingleMotorTalonSRX(RobotMap.kIntakeRollers1ID, "intake", false, true);
 	wrist = new SingleMotorArm(RobotMap.kWristID, "wrist", true, true);
 	wrist.configAngleConversion((1./4096.) * (12./30.) * 360., 117);
-	wrist.configFFs(2.8, 0);
-	wrist.configMotionMagic(1540, 1540);
-	wrist.configPIDF(0, 0, 0, 0.66435325);
+	wrist.configFFs(2.85, 0.35);
+	wrist.configMotionMagic(2646, 2646);
+	wrist.configPIDF(1.0, 0, 1.75, 0.3865);
+	wrist.configTalonDeadband(0.004);
 	claw = new Piston(RobotMap.kIntakeClawID1, RobotMap.kIntakeClawID2);
+
+	arm = new SingleMotorArm(RobotMap.kArmID, "arm", false, false);
+	arm.configAngleConversion((1./4096.) * (12./30.) * 360., 117);
+	arm.configFFs(0, 0);
+	arm.configMotionMagic(1540, 1540);
+	arm.configPIDF(0, 0, 0, 0);
+	arm.configTalonDeadband(0.004);
 	oi = new OI();
 
 	
