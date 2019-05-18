@@ -9,9 +9,10 @@ import com.nerdherd.lib.drivetrain.characterization.DriveCharacterizationTest;
 import com.nerdherd.lib.drivetrain.characterization.OpenLoopDrive;
 import com.nerdherd.lib.motor.commands.SetMotorPower;
 import com.nerdherd.lib.oi.DefaultOI;
+import com.nerdherd.lib.pneumatics.commands.ExtendPiston;
+import com.nerdherd.lib.pneumatics.commands.RetractPiston;
 import com.team687.frc2018.commands.TurnAngle;
 import com.team687.frc2018.commands.intake.ClawClose;
-import com.team687.frc2018.commands.intake.ClawOpen;
 import com.team687.frc2018.commands.superstructure.AdjustForwardsScale;
 import com.team687.frc2018.commands.superstructure.DefaultIntake;
 import com.team687.frc2018.commands.superstructure.DefaultStow;
@@ -108,9 +109,9 @@ public class OI extends DefaultOI {
     //	switchPosition_11.whenPressed(new StackCubes(35));
 
         openClaw_6 = new JoystickButton(super.operatorJoy, 5);
-        openClaw_6.whenPressed(new ClawOpen());
+        openClaw_6.whenPressed(new ExtendPiston(Robot.claw));
         closeClaw_5 = new JoystickButton(super.operatorJoy, 6);
-        closeClaw_5.whenPressed(new ClawClose());
+        closeClaw_5.whenPressed(new RetractPiston(Robot.claw));
         // flipCube_12 = new JoystickButton(super.operatorJoy, 12);
         // flipCube_12.whenPressed(new FlipCube());
         backupStow_12 = new JoystickButton(super.operatorJoy, 12);
