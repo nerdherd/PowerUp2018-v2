@@ -55,16 +55,16 @@ public class Robot extends TimedRobot {
 	drive.resetEncoders();
 
 	intake = new SingleMotorTalonSRX(RobotMap.kIntakeRollers1ID, "intake", false, true);
-	wrist = new SingleMotorArm(RobotMap.kWristID, "wrist", true, true);
-	wrist.configAngleConversion((1./4096.) * (12./30.) * 360., 117);
-	wrist.configFFs(2.85, 0.35);
-	wrist.configMotionMagic(2646, 2646);
-	wrist.configPIDF(1.0, 0, 1.75, 0.3865);
-	wrist.configTalonDeadband(0.004);
+	// wrist = new SingleMotorArm(RobotMap.kWristID, "wrist", true, true);
+	// wrist.configAngleConversion((1./4096.) * (12./30.) * 360., 117);
+	// wrist.configFFs(2.85, 0.35);
+	// wrist.configMotionMagic(2646, 2646);
+	// wrist.configPIDF(1.0, 0, 1.75, 0.3865);
+	// wrist.configTalonDeadband(0.004);
 	claw = new Piston(RobotMap.kIntakeClawID1, RobotMap.kIntakeClawID2);
 
-	arm = new SingleMotorArm(RobotMap.kArmID, "arm", false, false);
-	arm.configAngleConversion((1./4096.) * (12./30.) * 360., 117);
+	arm = new SingleMotorArm(RobotMap.kArmID, "arm", false, true);
+	arm.configAngleConversion(1./4096. * 12.0/36.0 * 18.0/60.0 * 360., -56);
 	arm.configFFs(0, 0);
 	arm.configMotionMagic(1540, 1540);
 	arm.configPIDF(0, 0, 0, 0);
@@ -73,7 +73,7 @@ public class Robot extends TimedRobot {
 
 	
 	ds = DriverStation.getInstance();
-	NerdyBadlog.initAndLog("/home/lvuser/logs/", "wrist_characterization", 0.02, wrist);
+	NerdyBadlog.initAndLog("/home/lvuser/logs/", "arm_characterization", 0.02, arm);
 
 	// CameraServer.getInstance().startAutomaticCapture();
 	}
@@ -81,7 +81,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void robotPeriodic() {
-		wrist.reportToSmartDashboard();
+		arm.reportToSmartDashboard();
 	}
 
     @Override
