@@ -3,6 +3,7 @@ package com.team687.frc2018;
 import java.io.File;
 import java.io.FileWriter;
 
+import com.nerdherd.lib.drivetrain.auto.DriveFalconTrajectory;
 import com.nerdherd.lib.drivetrain.auto.ResetDriveEncoders;
 import com.nerdherd.lib.drivetrain.auto.ResetGyro;
 import com.nerdherd.lib.drivetrain.characterization.DriveCharacterizationTest;
@@ -19,6 +20,7 @@ import com.team687.frc2018.commands.superstructure.DefaultStow;
 import com.team687.frc2018.commands.superstructure.IntakeSequenceCurrent;
 import com.team687.frc2018.commands.superstructure.StowToForwardsScale;
 import com.team687.frc2018.commands.superstructure.SwitchScorePositionTeleop;
+import com.team687.frc2018.constants.AutoConstants;
 import com.team687.frc2018.constants.SuperstructureConstants;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -75,6 +77,7 @@ public class OI extends DefaultOI {
         SmartDashboard.putData("Turn 90 deg", new TurnAngle(Robot.drive, 90, 1, 5, 0.006, 0.0007));
         SmartDashboard.putData("Drive Characterization", new DriveCharacterizationTest(Robot.drive, 0.5));
         SmartDashboard.putData("2 V open loop", new OpenLoopDrive(Robot.drive, 0.15));
+        SmartDashboard.putData("Right Level 1 Rocket", new DriveFalconTrajectory(Robot.drive, AutoConstants.RightRocketPath1, 3, true, 0.3, 0));
         // SmartDashboard.putData("Drive Motion Magic", new DriveDistanceMotionMagic(Robot.drive, 15000, 500, 500));
         // SmartDashboard.putData("Drive Trajectory", new DriveTrajectory(AutoConstants.testTraj, 3, true, 0.3, 0));
         // SmartDashboard.putData("Backwards Trajectory", new DriveTrajectory(AutoConstants.BackwardsTraj, 3, false, 0.3, 0));
