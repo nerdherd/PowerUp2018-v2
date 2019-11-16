@@ -1,7 +1,7 @@
 package com.team687.frc2018.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import com.nerdherd.lib.drivetrain.singlespeed.Drivetrain;
+import com.nerdherd.lib.drivetrain.experimental.Drivetrain;
 import com.nerdherd.lib.drivetrain.teleop.ArcadeDrive;
 import com.nerdherd.lib.misc.AutoChooser;
 import com.team687.frc2018.Robot;
