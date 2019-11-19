@@ -22,26 +22,36 @@ public class DriveConstants {
 
 	// public static final double kRightStatic = 1.615/12;
 
-	// Concrete constants
+	/* Concrete constants
 	public static final double kLeftP = 0.1;
 	// public static final double kLeftI = 0;
 	// public static final double kLeftD = 0.619;
 	public static final double kLeftI = 0;
 	public static final double kLeftD = 0;
 	public static final double kLeftF = 0.27032775;
+	*/
+
+	//Test robotpy-characterization
+	public static final double kTestP = 0.429;
+	// public static final double kLeftI = 0;
+	// public static final double kLeftD = 0.619;
+	public static final double kTestI = 0;
+	public static final double kTestD = 0;
+	public static final double kTestS = 0.887;
+	public static final double kTestV = 0.0705;
+	public static final double kTestA = 0.0135;
 	
-	
+	/* Concrete constants continued
 	public static final double kRightP = 0.1;
 	// public static final double kRightI = 0;
 	// public static final double kRightD = 0.619;
 	public static final double kRightI = 0;
 	public static final double kRightD = 0;
 	public static final double kRightF = 0.27424925;
-
+	*/
 	public static final double kLeftStatic = 1.135;
 
 	public static final double kRightStatic = 1.102;
-
 
 	// max accel/cruise velocity
 	public static final int kLeftAcceleration = 1000;

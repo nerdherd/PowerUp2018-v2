@@ -102,7 +102,7 @@ public class Robot extends TimedRobot {
 	drive.reportToSmartDashboard();
 	arm.reportToSmartDashboard();
 	wrist.reportToSmartDashboard();
-
+	
 	}
 	@Override
     public void autonomousInit() {
@@ -129,7 +129,9 @@ public class Robot extends TimedRobot {
 
 	 drive.logToCSV();
 	 arm.logToCSV();
-     wrist.logToCSV();
+	 wrist.logToCSV();
+	 
+	drive.setVelocityFPS(5, 5, 0, 0);
     }
 
     @Override
