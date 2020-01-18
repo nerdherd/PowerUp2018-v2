@@ -19,7 +19,7 @@ public class Drive extends Drivetrain {
 		super(new NerdyTalon(RobotMap.kLeftMasterTalonID), new NerdyTalon(RobotMap.kRightMasterTalonID),
 		 new NerdyTalon[] {new NerdyTalon(RobotMap.kLeftSlaveVictorID)},
 		 new NerdyTalon[] {new NerdyTalon(RobotMap.kRightSlaveVictorID)},
-		 false, true);
+		 false, true, 30);
 		 super.configAutoChooser(new AutoChooser());
 		 super.configMaxVelocity(DriveConstants.kLeftCruiseVelocity);
 		 super.configSensorPhase(true, true);
@@ -31,10 +31,5 @@ public class Drive extends Drivetrain {
 		super.configFeedforwardRight(DriveConstants.kTestV, DriveConstants.kTestS, DriveConstants.kTestA);
 		
 		 super.configDate("2019_2_8_");
-		}
-
-	@Override
-	public void initDefaultCommand() {
-		setDefaultCommand(new ArcadeDrive(Robot.drive, Robot.oi));
 	}
 }

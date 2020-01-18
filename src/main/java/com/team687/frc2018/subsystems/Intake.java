@@ -16,14 +16,14 @@ import com.team687.frc2018.constants.SuperstructureConstants;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /**
  * Intake subsystem
  */
 
-public class Intake extends Subsystem {
+public class Intake extends SubsystemBase {
 
     private final TalonSRX m_rollers1;
     private final DoubleSolenoid m_claw;
@@ -52,10 +52,6 @@ public class Intake extends Subsystem {
         m_rollers1.enableCurrentLimit(false);
 
 	m_claw = new DoubleSolenoid(RobotMap.kIntakeClawID2, RobotMap.kIntakeClawID1);
-    }
-
-    @Override
-    protected void initDefaultCommand() {
     }
 
     public void openClaw() {

@@ -1,6 +1,7 @@
 package com.team687.frc2018;
 
 
+import com.nerdherd.lib.drivetrain.teleop.ArcadeDrive;
 import com.nerdherd.lib.misc.AutoChooser;
 import com.nerdherd.lib.motor.single.SingleMotorTalonSRX;
 import com.nerdherd.lib.pneumatics.Piston;
@@ -18,6 +19,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.ScheduleCommand;
 
 public class Robot extends TimedRobot {
 
@@ -47,8 +50,6 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotInit() {
-	pdp = new PowerDistributionPanel();
-	LiveWindow.disableTelemetry(pdp);
 	compressor = new Compressor();
 	compressor.start();
 
@@ -147,10 +148,12 @@ public class Robot extends TimedRobot {
 	drive.startLog();
 	arm.startLog();
 	wrist.startLog();
+	CommandScheduler.getInstance().schedule(new ArcadeDrive(drive, oi));
     }
 
     @Override
     public void teleopPeriodic() {
+		CommandScheduler.getInstance().run();
 	Scheduler.getInstance().run();
 	compressor.start();
 	drive.reportToSmartDashboard();
